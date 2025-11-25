@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Egan Bauersfeld</title>
+
     <style>
         body {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f8f8f8;
-            color: #222;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: #d8dee0; /* slightly more gray version of Katie’s vibe */
+            color: #111;
         }
 
         /* NAVBAR */
@@ -17,81 +18,77 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 40px;
-            background: white;
-            box-shadow: 0px 2px 5px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 10;
+            padding: 28px 60px;
+            background: transparent;
+            font-size: 1.15em;
         }
 
         .navbar .name {
+            font-weight: 600;
             font-size: 1.4em;
-            font-weight: bold;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         .nav-links a {
-            margin-left: 25px;
+            margin-left: 35px;
             text-decoration: none;
-            color: #333;
-            font-size: 1.05em;
+            color: #111;
             transition: 0.2s;
         }
 
         .nav-links a:hover {
-            color: #007bff;
+            opacity: 0.6;
         }
 
-        /* HERO SECTION */
-        .hero {
+        /* MAIN SECTION */
+        .container {
             display: flex;
-            justify-content: center;
             align-items: center;
-            padding: 80px 40px;
-            max-width: 1100px;
-            margin: auto;
+            justify-content: center;
+            padding: 60px 80px 120px 80px;
         }
 
-        .hero img {
-            width: 260px;
-            height: 260px;
+        .profile-pic {
+            width: 360px;
+            height: 460px;
             object-fit: cover;
-            border-radius: 10px;
-            margin-right: 50px;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.12);
+            border-radius: 35px;
+            margin-right: 80px;
+            box-shadow: 0px 3px 10px rgba(0,0,0,0.12);
         }
 
-        .hero-text {
-            max-width: 600px;
+        .text-block {
+            max-width: 550px;
         }
 
-        .hero-text h1 {
-            font-size: 2.6em;
-            margin-bottom: 15px;
+        .text-block h1 {
+            font-size: 3.2em;
+            margin-bottom: 25px;
+            font-weight: 600;
         }
 
-        .hero-text p {
-            font-size: 1.2em;
-            line-height: 1.6em;
+        .text-block p {
+            font-size: 1.18em;
+            line-height: 1.55em;
         }
 
         /* MOBILE */
-        @media (max-width: 800px) {
-            .hero {
+        @media (max-width: 900px) {
+            .container {
                 flex-direction: column;
                 text-align: center;
+                padding: 40px 20px;
             }
 
-            .hero img {
+            .profile-pic {
+                width: 250px;
+                height: 330px;
                 margin-right: 0;
-                margin-bottom: 25px;
-                width: 200px;
-                height: 200px;
+                margin-bottom: 30px;
             }
 
-            .nav-links a {
-                margin-left: 12px;
+            .text-block h1 {
+                font-size: 2.4em;
             }
         }
     </style>
@@ -109,21 +106,26 @@
         </div>
     </div>
 
-    <!-- HERO SECTION -->
-    <div class="hero">
-        <!-- Replace with your picture -->
-        <img src="your-picture.jpg" alt="Profile Picture">
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <img src="your-picture.jpg" alt="Egan Photo" class="profile-pic">
 
-        <div class="hero-text">
-            <h1>Welcome.</h1>
+        <div class="text-block">
+            <h1>Hi, I'm Egan.</h1>
             <p>
-                I'm Egan Bauersfeld — an engineering student, designer, and researcher passionate about
-                mechanical systems, applied optics, prototyping, and building meaningful solutions.  
-                This site highlights my work, projects, and accomplishments.
+                I am an undergraduate engineering student focused on mechanical systems, 
+                research, and hands-on design. My experience includes mechanical 
+                prototyping, optical systems research, hardware development, and 
+                interdisciplinary engineering projects.
+            </p>
+
+            <p>
+                Please explore this site to learn more about my projects, media work, 
+                resume, and interests. I’m always excited to share the engineering 
+                journey and the things I build along the way.
             </p>
         </div>
     </div>
 
 </body>
 </html>
-
