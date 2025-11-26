@@ -3,118 +3,169 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Food Finder — Engineering Project</title>
+    <title>Food Finder — Smart Shelf System</title>
 
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
-            color: #333;
             margin: 0;
-            padding: 0;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+            color: #333;
             line-height: 1.6;
         }
 
-        .container {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            height: 45vh;
+            background-image: url("../Bauersfeld, Egan.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        h1 {
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.45);
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-title {
+            position: relative;
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            z-index: 2;
             text-align: center;
-            font-size: 2.7rem;
-            margin-bottom: 40px;
-            font-weight: 600;
         }
 
-        .hero-image {
+        /* MAIN CONTENT */
+        .container {
+            max-width: 950px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        /* ZIG-ZAG FLEX ROWS */
+        .section-row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        /* reverse direction for alternating */
+        .reverse {
+            flex-direction: row-reverse;
+        }
+
+        .section-text {
+            flex: 1;
+        }
+
+        .section-text h2 {
+            font-size: 1.6rem;
+            margin-top: 0;
+        }
+
+        .section-image {
+            flex: 1;
+        }
+
+        .section-image img {
             width: 100%;
             border-radius: 10px;
-            margin-bottom: 40px;
         }
 
-        h2 {
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-top: 40px;
-            margin-bottom: 10px;
-        }
-
-        p, li {
-            font-size: 1.05rem;
-        }
-
-        ul {
-            margin: 10px 0 20px 20px;
-        }
-
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 40px;
-            font-size: 1rem;
-            text-decoration: none;
-            color: #444;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
+        /* Responsive stacking on smaller devices */
+        @media (max-width: 800px) {
+            .section-row,
+            .reverse {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 
 <body>
+
+    <!-- 🔥 INSERT YOUR NAV BAR HERE (COPY FROM index.html) -->
+    <!-- Example placeholder: -->
+    <!-- <nav> ... your whole nav bar ... </nav> -->
+
+
+    <!-- HERO HEADER WITH BACKGROUND IMAGE -->
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-title">Food Finder — Smart Shelf System</div>
+    </div>
+
+
+    <!-- MAIN CONTENT -->
     <div class="container">
 
-        <h1>Food Finder – Smart Shelf System</h1>
+        <!-- SECTION 1 -->
+        <div class="section-row">
+            <div class="section-image">
+                <img src="../Bauersfeld, Egan.jpg" alt="Food Finder Image">
+            </div>
+            <div class="section-text">
+                <h2>Overview</h2>
+                <p>
+                    Food Finder is a smart shelf insert that tracks real-time inventory in community food pantries
+                    using load-cell sensors and a connected database. Our goal was to make an affordable, modular,
+                    and easy-to-deploy solution.
+                </p>
+            </div>
+        </div>
 
-        <!-- Replace with a real image -->
-        <img src="../Bauersfeld, Egan.jpg" class="hero-image" alt="Food Finder Project Image">
+        <!-- SECTION 2 (reversed) -->
+        <div class="section-row reverse">
+            <div class="section-image">
+                <img src="../Bauersfeld, Egan.jpg" alt="Prototyping Photo">
+            </div>
+            <div class="section-text">
+                <h2>My Role</h2>
+                <p>
+                    I led the mechanical design: CAD modeling, prototyping, rapid iteration, hardware integration,
+                    and final optimization. I also supported electronics mounting and system-level testing.
+                </p>
+            </div>
+        </div>
 
-        <h2>Overview</h2>
-        <p>
-            Food Finder is a web-connected smart shelf insert designed to improve accessibility and usability 
-            in community food pantries. The system measures inventory levels in real time, uploads data to a 
-            database, and helps pantry managers track product demand and availability.
-        </p>
+        <!-- SECTION 3 -->
+        <div class="section-row">
+            <div class="section-image">
+                <img src="../Bauersfeld, Egan.jpg" alt="CAD or Sensor System">
+            </div>
+            <div class="section-text">
+                <h2>Technical Features</h2>
+                <ul>
+                    <li>Load-cell weight sensing with high-resolution ADC</li>
+                    <li>Drop-in modular shelving insert</li>
+                    <li>Web-connected logging + database display</li>
+                    <li>Mechanical design optimized for manufacturability</li>
+                </ul>
+            </div>
+        </div>
 
-        <h2>My Role</h2>
-        <p>
-            I led the mechanical design and development of the system. This included:
-        </p>
-        <ul>
-            <li>Researching sustainability and community pantry needs</li>
-            <li>Concept generation and mechanical prototyping</li>
-            <li>3D modeling and fabrication</li>
-            <li>Hardware integration and system optimization</li>
-            <li>Testing and validating the final design</li>
-        </ul>
+        <!-- SECTION 4 (reverse) -->
+        <div class="section-row reverse">
+            <div class="section-image">
+                <img src="../Bauersfeld, Egan.jpg" alt="Expo Photo">
+            </div>
+            <div class="section-text">
+                <h2>Outcome</h2>
+                <p>
+                    Food Finder won <strong>Best in Section</strong> at the Fall 2024 Engineering Design Expo
+                    (selected from 89 teams). The system is being prepared for future deployment in local community pantries.
+                </p>
+            </div>
+        </div>
 
-        <h2>Key Features</h2>
-        <ul>
-            <li>Drop-in shelf insert compatible with existing pantry shelving</li>
-            <li>Load-cell-based weight sensing for real-time inventory tracking</li>
-            <li>Cloud-connected database for remote monitoring</li>
-            <li>Durable, manufacturable mechanical framework</li>
-        </ul>
-
-        <h2>Technical Tools</h2>
-        <ul>
-            <li>SolidWorks (mechanical CAD)</li>
-            <li>3D printing and rapid prototyping</li>
-            <li>Electronics integration (load cells + microcontrollers)</li>
-            <li>Systems engineering + testing</li>
-        </ul>
-
-        <h2>Outcome</h2>
-        <p>
-            Our team received <strong>Best in Section</strong> at the Fall 2024 CU Engineering Design Expo, 
-            selected from 89 teams and over 500 total students. Food Finder continues to be refined with 
-            the goal of implementation in nearby community food-pantries.
-        </p>
-
-        <a class="back-link" href="../index.html">← Back to Home</a>
     </div>
+
 </body>
 </html>
