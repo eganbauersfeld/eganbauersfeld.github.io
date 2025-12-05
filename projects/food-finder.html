@@ -8,44 +8,33 @@
     <style>
         body {
             margin: 0;
-            background-color: #ffffff;
-            font-family: Arial, sans-serif;
-            color: #333;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: #d8dee0; /* same vibe as main page */
+            color: #111;
             line-height: 1.6;
         }
 
-        /* NAVBAR */
+        /* NAVBAR – copied to match main page */
         .navbar {
-            width: 100%;
-            height: 70px;
-            background-color: #111;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 40px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 9999;
+            padding: 28px 60px;
+            background: transparent;
+            font-size: 1.15em;
         }
 
-        .name {
-            color: white;
-            font-size: 1.3rem;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
+        .navbar .name {
+            font-weight: 600;
+            font-size: 1.4em;
+            letter-spacing: 0.3px;
         }
 
         .nav-links a {
-            color: white;
-            margin-left: 20px;
+            margin-left: 35px;
             text-decoration: none;
-            font-size: 1rem;
-            transition: opacity 0.2s ease;
+            color: #111;
+            transition: 0.2s;
         }
 
         .nav-links a:hover {
@@ -56,7 +45,6 @@
         .hero {
             position: relative;
             height: 45vh;
-            margin-top: 70px; /* prevents overlap with fixed navbar */
             background-image: url("../Bauersfeld, Egan.jpg");
             background-size: cover;
             background-position: center;
@@ -83,7 +71,7 @@
         /* MAIN CONTENT */
         .container {
             max-width: 950px;
-            margin: 50px auto;
+            margin: 50px auto 80px auto;
             padding: 0 20px;
         }
 
@@ -115,6 +103,7 @@
         .section-image img {
             width: 100%;
             border-radius: 10px;
+            box-shadow: 0px 3px 10px rgba(0,0,0,0.12);
         }
 
         @media (max-width: 800px) {
@@ -122,24 +111,26 @@
             .reverse {
                 flex-direction: column;
             }
+
+            .navbar {
+                padding: 20px 24px;
+                font-size: 1em;
+            }
+
+            .nav-links a {
+                margin-left: 18px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR (matches main page) -->
     <div class="navbar">
         <div class="name">Egan Bauersfeld</div>
         <div class="nav-links">
-            <div class="dropdown">
-        <a href="../index.html" class="dropbtn">Engineering Projects ▼</a>
-        <div class="dropdown-content">
-            <a href="food-finder.html">Food Finder</a>
-            <a href="another-project.html">Another Project</a>
-            <a href="third-project.html">Third Project</a>
-        </div>
-    </div>
+            <a href="../projects/food-finder.html">Engineering Projects</a>
             <a href="#media">Media</a>
             <a href="#resume">Resume</a>
             <a href="https://www.linkedin.com/in/egan-bauersfeld" target="_blank">LinkedIn</a>
