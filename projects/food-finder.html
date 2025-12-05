@@ -128,6 +128,27 @@
                 margin-left: 18px;
             }
         }
+
+        /* FULL WIDTH OVERVIEW STYLE */
+        .full-overview {
+            max-width: 900px;
+            margin: 80px auto;
+            text-align: left;
+
+            /* LINE UNDER OVERVIEW */
+            border-bottom: 1px solid #444;
+            padding-bottom: 30px;
+        }
+
+        .full-overview h2 {
+            font-size: 2rem; /* bigger title */
+            margin-bottom: 12px;
+        }
+
+        .full-overview p {
+            font-size: 1.25rem; /* bigger body text */
+            line-height: 1.65;
+        }
     </style>
 </head>
 
@@ -153,21 +174,16 @@
     <!-- MAIN CONTENT -->
     <div class="container">
 
-        <!-- SECTION 1 -->
-        <div class="section-row">
-            <div class="section-image">
-                <img src="../Bauersfeld, Egan.jpg" alt="Food Finder Image">
-            </div>
-            <div class="section-text">
-                <h2>Overview</h2>
-                <p>
-                    Food Finder is a smart shelf insert that tracks real-time inventory in community food pantries
-                    using load-cell sensors and a connected database. Our goal was to make an affordable, modular,
-                    and easy-to-deploy solution.
-                </p>
-            </div>
+        <!-- SECTION 1 (FULL WIDTH OVERVIEW) -->
+        <div class="full-overview">
+            <h2>Overview</h2>
+            <p>
+                Food Finder is a smart shelf insert that tracks real-time inventory in community food pantries
+                using load-cell sensors and a connected database. Our goal was to make an affordable, modular,
+                and easy-to-deploy solution.
+            </p>
         </div>
-
+        
         <!-- SECTION 2 -->
         <div class="section-row reverse">
             <div class="section-image">
