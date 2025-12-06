@@ -9,7 +9,7 @@
         body {
             margin: 0;
             font-family: Georgia, 'Times New Roman', Times, serif;
-            background-color: #d8dee0; /* same vibe as main page */
+            background-color: #d8dee0;
             color: #111;
             line-height: 1.6;
         }
@@ -46,7 +46,6 @@
         .nav-links a:hover {
             opacity: 0.6;
         }
-
 
         /* HERO SECTION */
         .hero {
@@ -113,6 +112,7 @@
             box-shadow: 0px 3px 10px rgba(0,0,0,0.12);
         }
 
+        /* MOBILE */
         @media (max-width: 800px) {
             .section-row,
             .reverse {
@@ -129,32 +129,53 @@
             }
         }
 
-        /* FULL WIDTH OVERVIEW STYLE */
+        /* FULL WIDTH OVERVIEW */
         .full-overview {
             max-width: 900px;
             margin: 80px auto;
             text-align: left;
-
-            /* LINE UNDER OVERVIEW */
             border-bottom: 1px solid #444;
             padding-bottom: 30px;
         }
 
         .full-overview h2 {
-            font-size: 2rem; /* bigger title */
+            font-size: 2rem;
             margin-bottom: 12px;
         }
 
         .full-overview p {
-            font-size: 1.25rem; /* bigger body text */
+            font-size: 1.25rem;
             line-height: 1.65;
+        }
+
+        /* LIGHT GRAY FOOTER */
+        .footer {
+            width: 100%;
+            background-color: #cfd4d6;
+            padding: 30px 0;
+            text-align: center;
+            color: #111;
+            margin-top: 100px;
+            font-size: 1rem;
+            border-top: 1px solid #b8bfc2;
+        }
+
+        .footer a {
+            color: #111;
+            text-decoration: none;
+            margin: 0 8px;
+            transition: 0.2s;
+        }
+
+        .footer a:hover {
+            opacity: 0.6;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR (matches main page) -->
+    <!-- NAVBAR -->
     <div class="navbar">
         <a href="../index.html" class="name">Egan Bauersfeld</a>
         <div class="nav-links">
@@ -165,7 +186,7 @@
         </div>
     </div>
 
-    <!-- HERO HEADER WITH BACKGROUND IMAGE -->
+    <!-- HERO -->
     <div class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-title">Food Finder — Smart Shelf System</div>
@@ -174,7 +195,7 @@
     <!-- MAIN CONTENT -->
     <div class="container">
 
-        <!-- SECTION 1 (FULL WIDTH OVERVIEW) -->
+        <!-- OVERVIEW -->
         <div class="full-overview">
             <h2>Overview</h2>
             <p>
@@ -183,7 +204,7 @@
                 and easy-to-deploy solution.
             </p>
         </div>
-        
+
         <!-- SECTION 2 -->
         <div class="section-row reverse">
             <div class="section-image">
@@ -192,8 +213,9 @@
             <div class="section-text">
                 <h2>My Role</h2>
                 <p>
-                    I led the mechanical design: CAD modeling, prototyping, rapid iteration, hardware integration,
-                    and final optimization. I also supported electronics mounting and system-level testing.
+                    I led the mechanical design: CAD modeling, prototyping, rapid iteration,
+                    hardware integration, and final optimization. I also supported electronics mounting
+                    and system-level testing.
                 </p>
             </div>
         </div>
@@ -228,6 +250,14 @@
             </div>
         </div>
 
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>
+            <a href="mailto:eganbauersfeld@gmail.com">eganbauersfeld@gmail.com</a> •
+            <a href="https://www.linkedin.com/in/egan-bauersfeld" target="_blank">LinkedIn</a>
+        </p>
     </div>
 
 </body>
