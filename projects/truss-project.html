@@ -42,16 +42,17 @@
         }
         
         .nav-links a {
+            margin-left: 35px;
             text-decoration: none;
             color: #111;
             transition: 0.2s;
         }
-        
+
         .nav-links a:hover {
             opacity: 0.6;
         }
 
-        /* DROPDOWN FOR PROJECTS */
+        /* DROPDOWN */
         .dropdown {
             position: relative;
             margin-left: 35px;
@@ -61,51 +62,42 @@
             cursor: pointer;
             text-decoration: none;
             color: #111;
-            transition: 0.2s;
         }
 
-        .dropdown-toggle:hover {
+        .dropdown:hover .dropdown-toggle {
             opacity: 0.6;
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
-            top: 100%;
-            left: 0;
-            margin-top: 8px;
             background-color: #f3f5f6;
             min-width: 260px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.12);
             border-radius: 8px;
             padding: 8px 0;
+            top: 100%;
+            left: 0;
             z-index: 10;
         }
 
         .dropdown-content a {
             display: block;
-            margin: 0;
             padding: 8px 16px;
             font-size: 0.97em;
-            text-decoration: none;
             color: #111;
-            white-space: nowrap;
+            text-decoration: none;
         }
 
         .dropdown-content a:hover {
             background-color: #e0e4e6;
-            opacity: 1;
         }
 
         .dropdown:hover .dropdown-content {
             display: block;
         }
 
-        .nav-links > a:not(.dropdown-toggle) {
-            margin-left: 35px;
-        }
-
-        /* HERO SECTION */
+        /* HERO */
         .hero {
             position: relative;
             height: 45vh;
@@ -118,7 +110,7 @@
         }
 
         .hero-overlay {
-            background: rgba(0, 0, 0, 0.45);
+            background: rgba(0,0,0,0.45);
             position: absolute;
             inset: 0;
         }
@@ -129,7 +121,6 @@
             font-weight: bold;
             color: white;
             z-index: 2;
-            text-align: center;
         }
 
         /* MAIN CONTENT */
@@ -139,10 +130,8 @@
             padding: 0 20px;
         }
 
-        /* ZIG-ZAG FLEX ROWS */
         .section-row {
             display: flex;
-            align-items: center;
             gap: 40px;
             margin-bottom: 80px;
         }
@@ -155,11 +144,6 @@
             flex: 1;
         }
 
-        .section-text h2 {
-            font-size: 1.6rem;
-            margin-top: 0;
-        }
-
         .section-image {
             flex: 1;
         }
@@ -167,21 +151,19 @@
         .section-image img {
             width: 100%;
             border-radius: 10px;
-            box-shadow: 0px 3px 10px rgba(0,0,0,0.12);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
         }
 
-        /* FULL WIDTH OVERVIEW */
+        /* OVERVIEW */
         .full-overview {
             max-width: 900px;
             margin: 80px auto;
-            text-align: left;
             border-bottom: 1px solid #444;
             padding-bottom: 30px;
         }
 
         .full-overview h2 {
             font-size: 2rem;
-            margin-bottom: 12px;
         }
 
         .full-overview p {
@@ -189,59 +171,39 @@
             line-height: 1.65;
         }
 
-        /* THREE-COLUMN LIST SECTION */
+        /* THREE-COLUMN SECTION */
         .three-columns {
             display: flex;
             justify-content: space-between;
             gap: 40px;
             margin: 60px 0;
         }
-        
+
         .column {
             flex: 1;
         }
-        
+
         .column h3 {
             font-size: 1.4rem;
             margin-bottom: 10px;
         }
-        
+
         .column ul {
             padding-left: 20px;
             line-height: 1.55;
         }
-        
+
         .column ul li {
             margin-bottom: 6px;
         }
 
         /* MOBILE */
         @media (max-width: 800px) {
-            .section-row,
-            .reverse {
+            .section-row, .reverse {
                 flex-direction: column;
             }
-
-            .navbar {
-                padding: 20px 24px;
-                font-size: 1em;
-            }
-
-            .nav-links > a:not(.dropdown-toggle) {
-                margin-left: 20px;
-            }
-
-            .dropdown {
-                margin-left: 20px;
-            }
-
             .three-columns {
                 flex-direction: column;
-            }
-
-            .dropdown-content {
-                left: auto;
-                right: 0;
             }
         }
 
@@ -251,22 +213,20 @@
             background-color: #cfd4d6;
             padding: 30px 0;
             text-align: center;
-            color: #111;
-            margin-top: 100px;
-            font-size: 1rem;
             border-top: 1px solid #b8bfc2;
+            margin-top: 100px;
         }
 
         .footer a {
             color: #111;
             text-decoration: none;
             margin: 0 8px;
-            transition: 0.2s;
         }
 
         .footer a:hover {
             opacity: 0.6;
         }
+
     </style>
 </head>
 
@@ -275,14 +235,13 @@
     <!-- NAVBAR -->
     <div class="navbar">
         <a href="../index.html" class="name">Egan Bauersfeld</a>
-        <div class="nav-links">
 
-            <!-- DROPDOWN: ENGINEERING PROJECTS -->
+        <div class="nav-links">
             <div class="dropdown">
                 <span class="dropdown-toggle">Engineering Projects ▾</span>
                 <div class="dropdown-content">
-                    <a href="../projects/food-finder.html">Food Finder — Smart Shelf System</a>
-                    <a href="../projects/truss-design.html">Truss Design Project</a>
+                    <a href="food-finder.html">Food Finder — Smart Shelf System</a>
+                    <a href="truss-project.html">Truss Design Project</a>
                 </div>
             </div>
 
@@ -305,17 +264,14 @@
         <div class="full-overview">
             <h2>Overview</h2>
             <p>
-                The goal of this project was to design, analyze, and test a 22 inch 
-                truss capable of supporting an 800-lb load while focusing on
-                aesthetics and minimizing weight. By utilizing materials testing 
-                devices, MATLAB, and Excel, and fundamental principles from Statics,
-                our team created a truss that far exceeded the design load. The project
-                emphasized how design decisions influence load paths and stress distribution
-                in real-world structures.
+                The goal of this project was to design, analyze, and test a 22-inch truss 
+                capable of supporting an 800-lb load while minimizing weight and maintaining 
+                structural efficiency. Using MATLAB, Excel, materials testing data, and 
+                principles from Statics, we engineered a truss that exceeded expectations.
             </p>
         </div>
 
-        <!-- SECTION 2 -->
+        <!-- ROLE -->
         <div class="section-row reverse">
             <div class="section-image">
                 <img src="../Bauersfeld, Egan.jpg" alt="Prototyping Photo">
@@ -323,50 +279,47 @@
             <div class="section-text">
                 <h2>My Role</h2>
                 <p>
-                    I led the structural layout and member sizing, built the analytical model,
-                    and supported physical construction and testing. I focused on combining 
-                    aesthetic geometry with efficient load paths to minimize weight while 
-                    maintaining sufficient safety factors.
+                    I led structural analysis, member selection, and overall geometric layout.
+                    I modeled load paths, optimized member sizing, and helped build and test 
+                    the final truss structure.
                 </p>
             </div>
         </div>
 
-        <!-- SECTION 3: THREE-COLUMN TECHNICAL BREAKDOWN -->
+        <!-- THREE COLUMN SECTION -->
         <div class="three-columns">
-
             <div class="column">
                 <h3>Analysis</h3>
                 <ul>
                     <li>MATLAB tension/compression modeling</li>
                     <li>Factor of safety calculations</li>
-                    <li>Load path evaluation</li>
                     <li>Member buckling analysis</li>
+                    <li>Load path evaluation</li>
                 </ul>
             </div>
-        
+
             <div class="column">
                 <h3>Design</h3>
                 <ul>
                     <li>Hand-sketched truss concepts</li>
-                    <li>Iterative SolidWorks modeling</li>
-                    <li>Weight optimization</li>
-                    <li>Pentagonal geometry for aesthetics & efficiency</li>
+                    <li>SolidWorks iterative geometry refinement</li>
+                    <li>Member weight optimization</li>
+                    <li>Pentagonal frame layout</li>
                 </ul>
             </div>
-        
+
             <div class="column">
                 <h3>Manufacturing</h3>
                 <ul>
                     <li>Balsa wood laser cutting</li>
                     <li>Precision sanding & trimming</li>
-                    <li>High-strength adhesive application</li>
-                    <li>Scale-accurate prototype assembly</li>
+                    <li>High-strength adhesive bonding</li>
+                    <li>Scaled prototype assembly</li>
                 </ul>
             </div>
-        
         </div>
 
-        <!-- SECTION 4 -->
+        <!-- OUTCOME -->
         <div class="section-row reverse">
             <div class="section-image">
                 <img src="../Bauersfeld, Egan.jpg" alt="Testing Photo">
@@ -374,10 +327,9 @@
             <div class="section-text">
                 <h2>Outcome</h2>
                 <p>
-                    The truss successfully supported loads well above the design target before failure.
-                    The project reinforced my understanding of how theoretical Statics principles connect 
-                    to real-world structures and gave me hands-on experience moving from analysis to fabrication
-                    and testing.
+                    The truss carried a load far exceeding the design requirement before failure.
+                    This project strengthened my understanding of structural behavior and 
+                    demonstrated how analytical design translates to physical performance.
                 </p>
             </div>
         </div>
