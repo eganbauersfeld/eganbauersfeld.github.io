@@ -31,6 +31,11 @@
             color: #111;
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
         .nav-links a {
             margin-left: 35px;
             text-decoration: none;
@@ -40,6 +45,56 @@
 
         .nav-links a:hover {
             opacity: 0.6;
+        }
+
+        /* DROPDOWN FOR PROJECTS */
+        .dropdown {
+            position: relative;
+            margin-left: 35px;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            text-decoration: none;
+            color: #111;
+            transition: 0.2s;
+        }
+
+        .dropdown-toggle:hover {
+            opacity: 0.6;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 8px;
+            background-color: #f3f5f6;
+            min-width: 260px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            border-radius: 8px;
+            padding: 8px 0;
+            z-index: 10;
+        }
+
+        .dropdown-content a {
+            display: block;
+            margin: 0; /* override nav-links margin */
+            padding: 8px 16px;
+            font-size: 0.97em;
+            text-decoration: none;
+            color: #111;
+            white-space: nowrap;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #e0e4e6;
+            opacity: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         /* MAIN SECTION */
@@ -92,6 +147,24 @@
             .text-block h1 {
                 font-size: 2.4em;
             }
+
+            .navbar {
+                padding: 20px 24px;
+                font-size: 1em;
+            }
+
+            .nav-links a {
+                margin-left: 20px;
+            }
+
+            .dropdown {
+                margin-left: 20px;
+            }
+
+            .dropdown-content {
+                left: auto;
+                right: 0;
+            }
         }
 
         /* LIGHT GRAY FOOTER */
@@ -124,7 +197,17 @@
     <div class="navbar">
         <div class="name">Egan Bauersfeld</div>
         <div class="nav-links">
-            <a href="projects/food-finder.html">Engineering Projects</a>
+
+            <!-- DROPDOWN: ENGINEERING PROJECTS -->
+            <div class="dropdown">
+                <span class="dropdown-toggle">Engineering Projects ▾</span>
+                <div class="dropdown-content">
+                    <a href="projects/food-finder.html">Food Finder — Smart Shelf System</a>
+                    <a href="projects/truss-design.html">Truss Design Project</a>
+                    <!-- Add more projects here later -->
+                </div>
+            </div>
+
             <a href="#media">Media</a>
             <a href="#resume">Resume</a>
             <a href="https://www.linkedin.com/in/egan-bauersfeld" target="_blank">LinkedIn</a>
@@ -163,4 +246,3 @@
 
 </body>
 </html>
-
