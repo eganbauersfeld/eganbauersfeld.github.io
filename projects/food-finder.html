@@ -35,6 +35,11 @@
         .navbar .name:hover {
             opacity: 0.6;
         }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
         
         .nav-links a {
             margin-left: 35px;
@@ -47,7 +52,52 @@
             opacity: 0.6;
         }
 
-        /* HERO SECTION */
+        /* DROPDOWN */
+        .dropdown {
+            position: relative;
+            margin-left: 35px;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            color: #111;
+            text-decoration: none;
+        }
+
+        .dropdown:hover .dropdown-toggle {
+            opacity: 0.6;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f3f5f6;
+            min-width: 260px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            border-radius: 8px;
+            padding: 8px 0;
+            top: 100%;
+            left: 0;
+            z-index: 10;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 8px 16px;
+            font-size: 0.97em;
+            color: #111;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #e0e4e6;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* HERO */
         .hero {
             position: relative;
             height: 45vh;
@@ -81,7 +131,6 @@
             padding: 0 20px;
         }
 
-        /* ZIG-ZAG FLEX ROWS */
         .section-row {
             display: flex;
             align-items: center;
@@ -97,11 +146,6 @@
             flex: 1;
         }
 
-        .section-text h2 {
-            font-size: 1.6rem;
-            margin-top: 0;
-        }
-
         .section-image {
             flex: 1;
         }
@@ -109,7 +153,45 @@
         .section-image img {
             width: 100%;
             border-radius: 10px;
-            box-shadow: 0px 3px 10px rgba(0,0,0,0.12);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+        }
+
+        /* FULL OVERVIEW */
+        .full-overview {
+            max-width: 900px;
+            margin: 80px auto;
+            border-bottom: 1px solid #444;
+            padding-bottom: 30px;
+        }
+
+        .full-overview h2 {
+            font-size: 2rem;
+        }
+
+        .full-overview p {
+            font-size: 1.25rem;
+            line-height: 1.65;
+        }
+
+        /* FOOTER */
+        .footer {
+            width: 100%;
+            background-color: #cfd4d6;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 1rem;
+            border-top: 1px solid #b8bfc2;
+            margin-top: 100px;
+        }
+
+        .footer a {
+            color: #111;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        .footer a:hover {
+            opacity: 0.6;
         }
 
         /* MOBILE */
@@ -118,57 +200,6 @@
             .reverse {
                 flex-direction: column;
             }
-
-            .navbar {
-                padding: 20px 24px;
-                font-size: 1em;
-            }
-
-            .nav-links a {
-                margin-left: 18px;
-            }
-        }
-
-        /* FULL WIDTH OVERVIEW */
-        .full-overview {
-            max-width: 900px;
-            margin: 80px auto;
-            text-align: left;
-            border-bottom: 1px solid #444;
-            padding-bottom: 30px;
-        }
-
-        .full-overview h2 {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-
-        .full-overview p {
-            font-size: 1.25rem;
-            line-height: 1.65;
-        }
-
-        /* LIGHT GRAY FOOTER */
-        .footer {
-            width: 100%;
-            background-color: #cfd4d6;
-            padding: 30px 0;
-            text-align: center;
-            color: #111;
-            margin-top: 100px;
-            font-size: 1rem;
-            border-top: 1px solid #b8bfc2;
-        }
-
-        .footer a {
-            color: #111;
-            text-decoration: none;
-            margin: 0 8px;
-            transition: 0.2s;
-        }
-
-        .footer a:hover {
-            opacity: 0.6;
         }
     </style>
 </head>
@@ -178,8 +209,16 @@
     <!-- NAVBAR -->
     <div class="navbar">
         <a href="../index.html" class="name">Egan Bauersfeld</a>
+
         <div class="nav-links">
-            <a href="../projects/food-finder.html">Engineering Projects</a>
+            <div class="dropdown">
+                <span class="dropdown-toggle">Engineering Projects ▾</span>
+                <div class="dropdown-content">
+                    <a href="food-finder.html">Food Finder — Smart Shelf System</a>
+                    <a href="truss-project.html">Truss Design Project</a>
+                </div>
+            </div>
+
             <a href="#media">Media</a>
             <a href="#resume">Resume</a>
             <a href="https://www.linkedin.com/in/egan-bauersfeld" target="_blank">LinkedIn</a>
@@ -201,21 +240,32 @@
             <p>
                 Food Finder is a smart shelf insert that tracks real-time inventory in community food pantries
                 using load-cell sensors and a connected database. Our goal was to make an affordable, modular,
-                and easy-to-deploy solution.
+                easy-to-deploy solution.
             </p>
+        </div>
+
+        <!-- SECTION 1 -->
+        <div class="section-row">
+            <div class="section-image">
+                <img src="../Bauersfeld, Egan.jpg" alt="Food Finder Image">
+            </div>
+            <div class="section-text">
+                <h2>System Overview</h2>
+                <p>
+                    The insert sits beneath pantry items and continuously measures weight changes to determine real-time stock levels.
+                </p>
+            </div>
         </div>
 
         <!-- SECTION 2 -->
         <div class="section-row reverse">
             <div class="section-image">
-                <img src="../Bauersfeld, Egan.jpg" alt="Prototyping Photo">
+                <img src="../Bauersfeld, Egan.jpg" alt="Prototype Image">
             </div>
             <div class="section-text">
                 <h2>My Role</h2>
                 <p>
-                    I led the mechanical design: CAD modeling, prototyping, rapid iteration,
-                    hardware integration, and final optimization. I also supported electronics mounting
-                    and system-level testing.
+                    I led the mechanical design: CAD modeling, prototyping, load-cell mounting, and manufacturability optimization.
                 </p>
             </div>
         </div>
@@ -223,15 +273,15 @@
         <!-- SECTION 3 -->
         <div class="section-row">
             <div class="section-image">
-                <img src="../Bauersfeld, Egan.jpg" alt="CAD or Sensor System">
+                <img src="../Bauersfeld, Egan.jpg" alt="Sensor System Image">
             </div>
             <div class="section-text">
                 <h2>Technical Features</h2>
                 <ul>
-                    <li>Load-cell weight sensing with high-resolution ADC</li>
-                    <li>Drop-in modular shelving insert</li>
-                    <li>Web-connected logging + database display</li>
-                    <li>Mechanical design optimized for manufacturability</li>
+                    <li>High-resolution weight measurement</li>
+                    <li>Modular slot-based system</li>
+                    <li>WiFi-enabled cloud logging</li>
+                    <li>Optimized structure for manufacturability</li>
                 </ul>
             </div>
         </div>
@@ -244,8 +294,7 @@
             <div class="section-text">
                 <h2>Outcome</h2>
                 <p>
-                    Food Finder won <strong>Best in Section</strong> at the Fall 2024 Engineering Design Expo
-                    (selected from 89 teams). The system is being prepared for future deployment in local community pantries.
+                    Awarded <strong>Best in Section</strong> at the Fall 2024 Engineering Design Expo.
                 </p>
             </div>
         </div>
