@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Finder — Smart Shelf System</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: #d8dee0;
+            color: #111;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 28px 60px;
+            background: transparent;
+            font-size: 1.15em;
+        }
+        
+        .navbar .name {
+            font-weight: 600;
+            font-size: 1.4em;
+            letter-spacing: 0.3px;
+            text-decoration: none;
+            color: #111;
+        }
+        
+        .navbar .name:hover {
+            opacity: 0.6;
+        }
+        
+        .nav-links a {
+            margin-left: 35px;
+            text-decoration: none;
+            color: #111;
+            transition: 0.2s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            height: 45vh;
+            background-image: url("../Bauersfeld, Egan.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.45);
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-title {
+            position: relative;
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            z-index: 2;
+            text-align: center;
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            max-width: 950px;
+            margin: 50px auto 80px auto;
+            padding: 0 20px;
+        }
+
+        /* ZIG-ZAG FLEX ROWS */
+        .section-row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .reverse {
+            flex-direction: row-reverse;
+        }
+
+        .section-text {
+            flex: 1;
+        }
+
+        .section-text h2 {
+            font-size: 1.6rem;
+            margin-top: 0;
+        }
+
+        .section-image {
+            flex: 1;
+        }
+
+        .section-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0px 3px 10px rgba(0,0,0,0.12);
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+            .section-row,
+            .reverse {
+                flex-direction: column;
+            }
+
+            .navbar {
+                padding: 20px 24px;
+                font-size: 1em;
+            }
+
+            .nav-links a {
+                margin-left: 18px;
+            }
+        }
+
+        /* FULL WIDTH OVERVIEW */
+        .full-overview {
+            max-width: 900px;
+            margin: 80px auto;
+            text-align: left;
+            border-bottom: 1px solid #444;
+            padding-bottom: 30px;
+        }
+
+        .full-overview h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .full-overview p {
+            font-size: 1.25rem;
+            line-height: 1.65;
+        }
+
+        /* THREE-COLUMN LIST SECTION */
+        .three-columns {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin: 60px 0;
+        }
+        
+        .column {
+            flex: 1;
+        }
+        
+        .column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .column ul {
+            padding-left: 20px;
+            line-height: 1.55;
+        }
+        
+        .column ul li {
+            margin-bottom: 6px;
+        }
+        
+        /* MOBILE STACKING */
+        @media (max-width: 800px) {
+            .three-columns {
+                flex-direction: column;
+            }
+        }
+
+
+        /* OOTER */
+        .footer {
+            width: 100%;
+            background-color: #cfd4d6;
+            padding: 30px 0;
+            text-align: center;
+            color: #111;
+            margin-top: 100px;
+            font-size: 1rem;
+            border-top: 1px solid #b8bfc2;
+        }
+
+        .footer a {
+            color: #111;
+            text-decoration: none;
+            margin: 0 8px;
+            transition: 0.2s;
+        }
+
+        .footer a:hover {
+            opacity: 0.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <a href="../index.html" class="name">Egan Bauersfeld</a>
+        <div class="nav-links">
+            <a href="../projects/food-finder.html">Engineering Projects</a>
+            <a href="#media">Media</a>
+            <a href="#resume">Resume</a>
+            <a href="https://www.linkedin.com/in/egan-bauersfeld" target="_blank">LinkedIn</a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-title">Truss Design Project</div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+
+        <!-- OVERVIEW -->
+        <div class="full-overview">
+            <h2>Overview</h2>
+            <p>
+                The goal of this project was to design, analyze, and test a 22 inch 
+                truss capable of supporting an 800-lb load while focusing on
+                aesthetics and minimizing weight. By utilizing materials testing 
+                devices, MATLAB, and Excel, and fundamental principles 
+                from Statics, we designed a truss that far exceeded the
+                . The project emphasized understanding 
+                how design decisions influence load paths and stress distribution in 
+                real-world structures.
+            </p>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div class="section-row reverse">
+            <div class="section-image">
+                <img src="../Bauersfeld, Egan.jpg" alt="Prototyping Photo">
+            </div>
+            <div class="section-text">
+                <h2>My Role</h2>
+                <p>
+                    I led the mechanical design: CAD modeling, prototyping, rapid iteration,
+                    hardware integration, and final optimization. I also supported electronics mounting
+                    and system-level testing.
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION 3: THREE-COLUMN TECHNICAL BREAKDOWN -->
+        <div class="three-columns">
+
+        <div class="column">
+            <h3>Analysis</h3>
+            <ul>
+                <li>MATLAB tension/compression modeling</li>
+                <li>Factor of safety calculations</li>
+                <li>Load path evaluation</li>
+                <li>Member buckling analysis</li>
+            </ul>
+        </div>
+    
+        <div class="column">
+            <h3>Design</h3>
+            <ul>
+                <li>Hand-sketched truss concepts</li>
+                <li>Iterative SolidWorks modeling</li>
+                <li>Weight optimization</li>
+                <li>Pentagonal geometry for aesthetics & efficiency</li>
+            </ul>
+        </div>
+    
+        <div class="column">
+            <h3>Manufacturing</h3>
+            <ul>
+                <li>Balsa wood laser cutting</li>
+                <li>Precision sanding & trimming</li>
+                <li>High-strength adhesive application</li>
+                <li>Scale-accurate prototype assembly</li>
+            </ul>
+        </div>
+    
+    </div>
+
+
+        <!-- SECTION 4 -->
+        <div class="section-row reverse">
+            <div class="section-image">
+                <img src="../Bauersfeld, Egan.jpg" alt="Expo Photo">
+            </div>
+            <div class="section-text">
+                <h2>Outcome</h2>
+                <p>
+                    Food Finder won <strong>Best in Section</strong> at the Fall 2024 Engineering Design Expo
+                    (selected from 89 teams). The system is being prepared for future deployment in local community pantries.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>
+            <a href="mailto:eganbauersfeld@gmail.com">eganbauersfeld@gmail.com</a> •
+            <a href="https://www.linkedin.com/in/egan-bauersfeld" target="_blank">LinkedIn</a>
+        </p>
+    </div>
+
+</body>
+</html>
