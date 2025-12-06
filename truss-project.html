@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Food Finder — Smart Shelf System</title>
+    <title>Truss Design Project</title>
 
     <style>
         body {
@@ -35,9 +35,13 @@
         .navbar .name:hover {
             opacity: 0.6;
         }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
         
         .nav-links a {
-            margin-left: 35px;
             text-decoration: none;
             color: #111;
             transition: 0.2s;
@@ -45,6 +49,60 @@
         
         .nav-links a:hover {
             opacity: 0.6;
+        }
+
+        /* DROPDOWN FOR PROJECTS */
+        .dropdown {
+            position: relative;
+            margin-left: 35px;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            text-decoration: none;
+            color: #111;
+            transition: 0.2s;
+        }
+
+        .dropdown-toggle:hover {
+            opacity: 0.6;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 8px;
+            background-color: #f3f5f6;
+            min-width: 260px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            border-radius: 8px;
+            padding: 8px 0;
+            z-index: 10;
+        }
+
+        .dropdown-content a {
+            display: block;
+            margin: 0;
+            padding: 8px 16px;
+            font-size: 0.97em;
+            text-decoration: none;
+            color: #111;
+            white-space: nowrap;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #e0e4e6;
+            opacity: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .nav-links > a:not(.dropdown-toggle) {
+            margin-left: 35px;
         }
 
         /* HERO SECTION */
@@ -112,23 +170,6 @@
             box-shadow: 0px 3px 10px rgba(0,0,0,0.12);
         }
 
-        /* MOBILE */
-        @media (max-width: 800px) {
-            .section-row,
-            .reverse {
-                flex-direction: column;
-            }
-
-            .navbar {
-                padding: 20px 24px;
-                font-size: 1em;
-            }
-
-            .nav-links a {
-                margin-left: 18px;
-            }
-        }
-
         /* FULL WIDTH OVERVIEW */
         .full-overview {
             max-width: 900px;
@@ -173,16 +214,38 @@
         .column ul li {
             margin-bottom: 6px;
         }
-        
-        /* MOBILE STACKING */
+
+        /* MOBILE */
         @media (max-width: 800px) {
+            .section-row,
+            .reverse {
+                flex-direction: column;
+            }
+
+            .navbar {
+                padding: 20px 24px;
+                font-size: 1em;
+            }
+
+            .nav-links > a:not(.dropdown-toggle) {
+                margin-left: 20px;
+            }
+
+            .dropdown {
+                margin-left: 20px;
+            }
+
             .three-columns {
                 flex-direction: column;
             }
+
+            .dropdown-content {
+                left: auto;
+                right: 0;
+            }
         }
 
-
-        /* OOTER */
+        /* FOOTER */
         .footer {
             width: 100%;
             background-color: #cfd4d6;
@@ -213,7 +276,16 @@
     <div class="navbar">
         <a href="../index.html" class="name">Egan Bauersfeld</a>
         <div class="nav-links">
-            <a href="../projects/food-finder.html">Engineering Projects</a>
+
+            <!-- DROPDOWN: ENGINEERING PROJECTS -->
+            <div class="dropdown">
+                <span class="dropdown-toggle">Engineering Projects ▾</span>
+                <div class="dropdown-content">
+                    <a href="../projects/food-finder.html">Food Finder — Smart Shelf System</a>
+                    <a href="../projects/truss-design.html">Truss Design Project</a>
+                </div>
+            </div>
+
             <a href="#media">Media</a>
             <a href="#resume">Resume</a>
             <a href="https://www.linkedin.com/in/egan-bauersfeld" target="_blank">LinkedIn</a>
@@ -236,11 +308,10 @@
                 The goal of this project was to design, analyze, and test a 22 inch 
                 truss capable of supporting an 800-lb load while focusing on
                 aesthetics and minimizing weight. By utilizing materials testing 
-                devices, MATLAB, and Excel, and fundamental principles 
-                from Statics, we designed a truss that far exceeded the
-                . The project emphasized understanding 
-                how design decisions influence load paths and stress distribution in 
-                real-world structures.
+                devices, MATLAB, and Excel, and fundamental principles from Statics,
+                our team created a truss that far exceeded the design load. The project
+                emphasized how design decisions influence load paths and stress distribution
+                in real-world structures.
             </p>
         </div>
 
@@ -252,9 +323,10 @@
             <div class="section-text">
                 <h2>My Role</h2>
                 <p>
-                    I led the mechanical design: CAD modeling, prototyping, rapid iteration,
-                    hardware integration, and final optimization. I also supported electronics mounting
-                    and system-level testing.
+                    I led the structural layout and member sizing, built the analytical model,
+                    and supported physical construction and testing. I focused on combining 
+                    aesthetic geometry with efficient load paths to minimize weight while 
+                    maintaining sufficient safety factors.
                 </p>
             </div>
         </div>
@@ -262,49 +334,50 @@
         <!-- SECTION 3: THREE-COLUMN TECHNICAL BREAKDOWN -->
         <div class="three-columns">
 
-        <div class="column">
-            <h3>Analysis</h3>
-            <ul>
-                <li>MATLAB tension/compression modeling</li>
-                <li>Factor of safety calculations</li>
-                <li>Load path evaluation</li>
-                <li>Member buckling analysis</li>
-            </ul>
+            <div class="column">
+                <h3>Analysis</h3>
+                <ul>
+                    <li>MATLAB tension/compression modeling</li>
+                    <li>Factor of safety calculations</li>
+                    <li>Load path evaluation</li>
+                    <li>Member buckling analysis</li>
+                </ul>
+            </div>
+        
+            <div class="column">
+                <h3>Design</h3>
+                <ul>
+                    <li>Hand-sketched truss concepts</li>
+                    <li>Iterative SolidWorks modeling</li>
+                    <li>Weight optimization</li>
+                    <li>Pentagonal geometry for aesthetics & efficiency</li>
+                </ul>
+            </div>
+        
+            <div class="column">
+                <h3>Manufacturing</h3>
+                <ul>
+                    <li>Balsa wood laser cutting</li>
+                    <li>Precision sanding & trimming</li>
+                    <li>High-strength adhesive application</li>
+                    <li>Scale-accurate prototype assembly</li>
+                </ul>
+            </div>
+        
         </div>
-    
-        <div class="column">
-            <h3>Design</h3>
-            <ul>
-                <li>Hand-sketched truss concepts</li>
-                <li>Iterative SolidWorks modeling</li>
-                <li>Weight optimization</li>
-                <li>Pentagonal geometry for aesthetics & efficiency</li>
-            </ul>
-        </div>
-    
-        <div class="column">
-            <h3>Manufacturing</h3>
-            <ul>
-                <li>Balsa wood laser cutting</li>
-                <li>Precision sanding & trimming</li>
-                <li>High-strength adhesive application</li>
-                <li>Scale-accurate prototype assembly</li>
-            </ul>
-        </div>
-    
-    </div>
-
 
         <!-- SECTION 4 -->
         <div class="section-row reverse">
             <div class="section-image">
-                <img src="../Bauersfeld, Egan.jpg" alt="Expo Photo">
+                <img src="../Bauersfeld, Egan.jpg" alt="Testing Photo">
             </div>
             <div class="section-text">
                 <h2>Outcome</h2>
                 <p>
-                    Food Finder won <strong>Best in Section</strong> at the Fall 2024 Engineering Design Expo
-                    (selected from 89 teams). The system is being prepared for future deployment in local community pantries.
+                    The truss successfully supported loads well above the design target before failure.
+                    The project reinforced my understanding of how theoretical Statics principles connect 
+                    to real-world structures and gave me hands-on experience moving from analysis to fabrication
+                    and testing.
                 </p>
             </div>
         </div>
