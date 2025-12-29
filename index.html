@@ -27,7 +27,6 @@
             font-weight: 600;
             font-size: 1.4em;
             letter-spacing: 0.3px;
-            text-decoration: none;
             color: #111;
         }
 
@@ -36,16 +35,15 @@
             align-items: center;
         }
 
-        /* Make <a> and the dropdown toggle share identical "nav item" sizing */
+        /* Shared nav item styling */
         .nav-links a,
         .dropdown-toggle {
             margin-left: 35px;
             text-decoration: none;
             color: #111;
-            transition: 0.2s;
+            transition: opacity 0.2s ease;
             display: inline-block;
-            line-height: 1;           /* baseline alignment */
-            padding: 0;               /* no vertical shift */
+            line-height: 1;
         }
 
         .nav-links a:hover,
@@ -53,34 +51,35 @@
             opacity: 0.6;
         }
 
-        /* DROPDOWN FOR PROJECTS */
+        /* DROPDOWN */
         .dropdown {
             position: relative;
-            display: flex;            /* keeps it perfectly aligned with sibling links */
+            display: flex;
             align-items: center;
-            margin-left: 0;           /* handled by margin on toggle above */
         }
 
         .dropdown-toggle {
             cursor: pointer;
-            margin-left: 0;           /* handled by shared rule above */
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
-            top: calc(100% + 6px);    /* adjust spacing below nav */
+            top: calc(100% + 6px);
             left: 0;
 
             background-color: #f3f5f6;
             min-width: 260px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-            border-radius: 8px;
             padding: 8px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
             z-index: 10;
+
+            overflow: hidden;          /* keeps highlight inside */
+            box-sizing: border-box;    /* ✅ SIMPLE FIX for split-screen overflow */
         }
 
-        /* Invisible hover bridge so it won't disappear when moving down */
+        /* Invisible hover bridge */
         .dropdown-content::before {
             content: "";
             position: absolute;
@@ -90,13 +89,12 @@
             height: 10px;
         }
 
-        /* ✅ Make the hover highlight fill the ENTIRE dropdown width */
         .dropdown-content a {
             display: block;
             width: 100%;
             box-sizing: border-box;
 
-            margin: 0;                /* override any margins */
+            margin: 0;
             padding: 10px 16px;
             font-size: 0.97em;
             text-decoration: none;
@@ -106,10 +104,8 @@
 
         .dropdown-content a:hover {
             background-color: #e0e4e6;
-            opacity: 1;
         }
 
-        /* Keep dropdown open when hovering the wrapper */
         .dropdown:hover .dropdown-content {
             display: block;
         }
@@ -119,7 +115,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 60px 80px 120px 80px;
+            padding: 60px 80px 120px;
         }
 
         .profile-pic {
@@ -128,7 +124,7 @@
             object-fit: cover;
             border-radius: 35px;
             margin-right: 80px;
-            box-shadow: 0px 3px 10px rgba(0,0,0,0.12);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
         }
 
         .text-block {
@@ -174,14 +170,9 @@
             .dropdown-toggle {
                 margin-left: 20px;
             }
-
-            .dropdown-content {
-                left: auto;
-                right: 0;
-            }
         }
 
-        /* LIGHT GRAY FOOTER */
+        /* FOOTER */
         .footer {
             width: 100%;
             background-color: #cfd4d6;
@@ -197,7 +188,7 @@
             color: #111;
             text-decoration: none;
             margin: 0 8px;
-            transition: 0.2s;
+            transition: opacity 0.2s;
         }
 
         .footer a:hover {
@@ -212,13 +203,11 @@
         <div class="name">Egan Bauersfeld</div>
         <div class="nav-links">
 
-            <!-- DROPDOWN: ENGINEERING PROJECTS -->
             <div class="dropdown">
                 <span class="dropdown-toggle">Engineering Projects ▾</span>
                 <div class="dropdown-content">
                     <a href="projects/food-finder.html">Food Finder — Smart Shelf System</a>
                     <a href="projects/truss-design.html">Truss Design Project</a>
-                    <!-- Add more projects here later -->
                 </div>
             </div>
 
@@ -238,12 +227,10 @@
                 I’m a sophomore at the University of Colorado Boulder studying
                 Integrated Design Engineering with a Mechanical Engineering emphasis.
             </p>
-
             <p>
                 My experience includes mechanical prototyping, optical systems research,
                 hardware development, and interdisciplinary engineering projects.
             </p>
-
             <p>
                 This site showcases my work as an engineer.
             </p>
