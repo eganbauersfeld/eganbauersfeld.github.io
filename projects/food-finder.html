@@ -45,7 +45,7 @@
             margin-left: 35px;
             text-decoration: none;
             color: #111;
-            transition: 0.2s;
+            transition: opacity 0.2s ease;
         }
         
         .nav-links a:hover {
@@ -56,12 +56,16 @@
         .dropdown {
             position: relative;
             margin-left: 35px;
+            display: flex;
+            align-items: center;
         }
 
         .dropdown-toggle {
             cursor: pointer;
             color: #111;
             text-decoration: none;
+            display: inline-block;
+            line-height: 1;
         }
 
         .dropdown:hover .dropdown-toggle {
@@ -71,26 +75,50 @@
         .dropdown-content {
             display: none;
             position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+
             background-color: #f3f5f6;
             min-width: 260px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-            border-radius: 8px;
             padding: 8px 0;
-            top: 100%;
-            left: 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
             z-index: 10;
+
+            /* ✅ critical fixes */
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        /* Invisible hover bridge */
+        .dropdown-content::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
         }
 
         .dropdown-content a {
             display: block;
-            padding: 8px 16px;
+            width: 100%;
+            box-sizing: border-box;
+
+            margin: 0;
+            padding: 10px 16px;
             font-size: 0.97em;
             color: #111;
             text-decoration: none;
+            white-space: nowrap;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .dropdown-content a:hover {
             background-color: #e0e4e6;
+            opacity: 1;
         }
 
         .dropdown:hover .dropdown-content {
@@ -234,7 +262,6 @@
     <!-- MAIN CONTENT -->
     <div class="container">
 
-        <!-- OVERVIEW -->
         <div class="full-overview">
             <h2>Overview</h2>
             <p>
@@ -244,7 +271,6 @@
             </p>
         </div>
 
-        <!-- SECTION 1 -->
         <div class="section-row">
             <div class="section-image">
                 <img src="../Bauersfeld, Egan.jpg" alt="Food Finder Image">
@@ -257,7 +283,6 @@
             </div>
         </div>
 
-        <!-- SECTION 2 -->
         <div class="section-row reverse">
             <div class="section-image">
                 <img src="../Bauersfeld, Egan.jpg" alt="Prototype Image">
@@ -270,7 +295,6 @@
             </div>
         </div>
 
-        <!-- SECTION 3 -->
         <div class="section-row">
             <div class="section-image">
                 <img src="../Bauersfeld, Egan.jpg" alt="Sensor System Image">
@@ -286,7 +310,6 @@
             </div>
         </div>
 
-        <!-- SECTION 4 -->
         <div class="section-row reverse">
             <div class="section-image">
                 <img src="../Bauersfeld, Egan.jpg" alt="Expo Photo">
