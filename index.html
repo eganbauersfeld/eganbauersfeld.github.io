@@ -51,6 +51,9 @@
         .dropdown {
             position: relative;
             margin-left: 35px;
+
+            /* makes hover area a little more forgiving */
+            padding-bottom: 10px;
         }
 
         .dropdown-toggle {
@@ -58,6 +61,7 @@
             text-decoration: none;
             color: #111;
             transition: 0.2s;
+            display: inline-block;
         }
 
         .dropdown-toggle:hover {
@@ -67,15 +71,27 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            top: 100%;
+
+            /* ✅ use top offset instead of margin gap */
+            top: calc(100% + 8px);
             left: 0;
-            margin-top: 8px;
+
             background-color: #f3f5f6;
             min-width: 260px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.12);
             border-radius: 8px;
             padding: 8px 0;
             z-index: 10;
+        }
+
+        /* ✅ Invisible hover bridge so moving your cursor down won't close it */
+        .dropdown-content::before {
+            content: "";
+            position: absolute;
+            top: -12px;       /* height of the bridge */
+            left: 0;
+            width: 100%;
+            height: 12px;
         }
 
         .dropdown-content a {
@@ -221,12 +237,12 @@
         <div class="text-block">
             <h1>Hi, I'm Egan.</h1>
             <p>
-                I’m a sophomore at the University of Colorado Boulder studying 
+                I’m a sophomore at the University of Colorado Boulder studying
                 Integrated Design Engineering with a Mechanical Engineering emphasis.
             </p>
 
             <p>
-                My experience includes mechanical prototyping, optical systems research, 
+                My experience includes mechanical prototyping, optical systems research,
                 hardware development, and interdisciplinary engineering projects.
             </p>
 
