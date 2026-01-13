@@ -13,7 +13,7 @@ function loadNavbar() {
                 </div>
 
                 <a href="https://www.walmart.com" target="_blank" rel="noopener noreferrer">Media</a>
-                <a href="/resume.pdf" target="_blank">Resume</a>
+                <a href="resume.pdf" target="_blank">Resume</a>
                 <a href="https://www.linkedin.com/in/egan-bauersfeld" target="_blank">LinkedIn</a>
             </div>
         </div>
