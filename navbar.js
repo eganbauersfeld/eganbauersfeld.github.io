@@ -12,10 +12,8 @@ function loadNavbar() {
                     </div>
                 </div>
 
-                <a href="#media">Media</a>
                 <a href="https://www.walmart.com" target="_blank" rel="noopener noreferrer">Media</a>
-                <a href="#resume">Resume</a>
-                <a href="#fart">fart</a>
+                <a href="/resume.pdf" target="_blank">Resume</a>
                 <a href="https://www.linkedin.com/in/egan-bauersfeld" target="_blank">LinkedIn</a>
             </div>
         </div>
