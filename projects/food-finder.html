@@ -75,7 +75,7 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            top: calc(100% + 6px);
+            top: calc(100% + 2px);    /* reduced gap for easier access */
             left: 0;
 
             background-color: #f3f5f6;
@@ -85,19 +85,19 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.12);
             z-index: 10;
 
-            /* ✅ critical fixes */
+            /* critical fixes */
             overflow: hidden;
             box-sizing: border-box;
         }
 
-        /* Invisible hover bridge */
+        /* Larger invisible hover bridge so it won't disappear when moving down */
         .dropdown-content::before {
             content: "";
             position: absolute;
-            top: -10px;
-            left: 0;
-            width: 100%;
-            height: 10px;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            height: 20px;
         }
 
         .dropdown-content a {

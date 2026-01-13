@@ -71,14 +71,24 @@
         .dropdown-content {
             display: none;
             position: absolute;
+            top: calc(100% + 2px);    /* reduced gap for easier access */
+            left: 0;
             background-color: #f3f5f6;
             min-width: 260px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.12);
             border-radius: 8px;
             padding: 8px 0;
-            top: 100%;
-            left: 0;
             z-index: 10;
+        }
+
+        /* Larger invisible hover bridge so it won't disappear when moving down */
+        .dropdown-content::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            height: 20px;
         }
 
         .dropdown-content a {
