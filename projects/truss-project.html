@@ -1,356 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Truss Design Project</title>
-
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            background-color: #d8dee0;
-            color: #111;
-            line-height: 1.6;
-        }
-
-        /* NAVBAR */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 28px 60px;
-            background: transparent;
-            font-size: 1.15em;
-        }
-        
-        .navbar .name {
-            font-weight: 600;
-            font-size: 1.4em;
-            letter-spacing: 0.3px;
-            text-decoration: none;
-            color: #111;
-        }
-        
-        .navbar .name:hover {
-            opacity: 0.6;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            margin-left: 35px;
-            text-decoration: none;
-            color: #111;
-            transition: 0.2s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.6;
-        }
-
-        /* DROPDOWN */
-        .dropdown {
-            position: relative;
-            margin-left: 35px;
-        }
-
-        .dropdown-toggle {
-            cursor: pointer;
-            text-decoration: none;
-            color: #111;
-        }
-
-        .dropdown:hover .dropdown-toggle {
-            opacity: 0.6;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: calc(100% + 2px);    /* reduced gap for easier access */
-            left: 0;
-            background-color: #f3f5f6;
-            min-width: 260px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-            border-radius: 8px;
-            padding: 8px 0;
-            z-index: 10;
-        }
-
-        /* Larger invisible hover bridge so it won't disappear when moving down */
-        .dropdown-content::before {
-            content: "";
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            right: -20px;
-            height: 20px;
-        }
-
-        .dropdown-content a {
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
-
-            margin: 0;
-            padding: 10px 16px;
-            font-size: 0.97em;
-            text-decoration: none;
-            color: #111;
-            white-space: nowrap;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #e0e4e6;
-            opacity: 1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* HERO */
-        .hero {
-            position: relative;
-            height: 400px;
-            background-image: url("../Bauersfeld, Egan.jpg");
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-overlay {
-            background: rgba(0,0,0,0.45);
-            position: absolute;
-            inset: 0;
-        }
-
-        .hero-title {
-            position: relative;
-            font-size: 3rem;
-            font-weight: bold;
-            color: white;
-            z-index: 2;
-        }
-
-        /* MAIN CONTENT */
-        .container {
-            max-width: 950px;
-            margin: 50px auto 80px auto;
-            padding: 0 20px;
-        }
-
-        .section-row {
-            display: flex;
-            gap: 40px;
-            margin-bottom: 80px;
-        }
-
-        .reverse {
-            flex-direction: row-reverse;
-        }
-
-        .section-text {
-            flex: 1;
-        }
-
-        .section-image {
-            flex: 1;
-        }
-
-        .section-image img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-        }
-
-        /* OVERVIEW */
-        .full-overview {
-            max-width: 900px;
-            margin: 80px auto;
-            border-bottom: 1px solid #444;
-            padding-bottom: 30px;
-        }
-
-        .full-overview h2 {
-            font-size: 2rem;
-        }
-
-        .full-overview p {
-            font-size: 1.25rem;
-            line-height: 1.65;
-        }
-
-        /* THREE-COLUMN SECTION */
-        .three-columns {
-            display: flex;
-            justify-content: space-between;
-            gap: 40px;
-            margin: 60px 0;
-        }
-
-        .column {
-            flex: 1;
-        }
-
-        .column h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        .column ul {
-            padding-left: 20px;
-            line-height: 1.55;
-        }
-
-        .column ul li {
-            margin-bottom: 6px;
-        }
-
-        /* MOBILE */
-        @media (max-width: 800px) {
-            .section-row, .reverse {
-                flex-direction: column;
-            }
-            .three-columns {
-                flex-direction: column;
-            }
-        }
-
-        /* FOOTER */
-        .footer {
-            width: 100%;
-            background-color: #cfd4d6;
-            padding: 30px 0;
-            text-align: center;
-            border-top: 1px solid #b8bfc2;
-            margin-top: auto;
-        }
-
-        .footer a {
-            color: #111;
-            text-decoration: none;
-            margin: 0 8px;
-        }
-
-        .footer a:hover {
-            opacity: 0.6;
-        }
-
-    </style>
+    <link rel="stylesheet" href="../styles.css">
 </head>
-
 <body>
-
     <!-- NAVBAR -->
     <div id="navbar-container"></div>
     <script src="../navbar.js"></script>
 
-    <!-- HERO -->
-    <div class="hero">
+    <!-- HERO SECTION -->
+    <section class="hero">
         <div class="hero-overlay"></div>
-        <div class="hero-title">Truss Design Project</div>
-    </div>
+        <h1 class="hero-title">Truss Design Project</h1>
+    </section>
 
     <!-- MAIN CONTENT -->
-    <div class="container">
+    <main class="project-content">
+        <section class="project-section">
+            <h2>Project Overview</h2>
+            <p>The goal of this project was to design, analyze, and test a 22-inch truss capable of supporting an 800-lb load while minimizing weight and maintaining structural efficiency. Using MATLAB, Excel, materials testing data, and principles from Statics, we engineered a truss that exceeded expectations.</p>
+        </section>
 
-        <!-- OVERVIEW -->
-        <div class="full-overview">
-            <h2>Overview</h2>
-            <p>
-                The goal of this project was to design, analyze, and test a 22-inch truss 
-                capable of supporting an 800-lb load while minimizing weight and maintaining 
-                structural efficiency. Using MATLAB, Excel, materials testing data, and 
-                principles from Statics, we engineered a truss that exceeded expectations.
-            </p>
-        </div>
+        <section class="project-section image-section">
+            <div class="image-placeholder">
+                <p>Image 1: Truss Design</p>
+            </div>
+        </section>
 
-        <!-- ROLE -->
-        <div class="section-row reverse">
-            <div class="section-image">
-                <img src="../Bauersfeld, Egan.jpg" alt="Prototyping Photo">
-            </div>
-            <div class="section-text">
-                <h2>My Role</h2>
-                <p>
-                    I led structural analysis, member selection, and overall geometric layout.
-                    I modeled load paths, optimized member sizing, and helped build and test 
-                    the final truss structure.
-                </p>
-            </div>
-        </div>
+        <section class="project-section">
+            <h2>My Role</h2>
+            <p>I led structural analysis, member selection, and overall geometric layout. I modeled load paths, optimized member sizing, and helped build and test the final truss structure.</p>
+        </section>
 
-        <!-- THREE COLUMN SECTION -->
-        <div class="three-columns">
-            <div class="column">
-                <h3>Analysis</h3>
-                <ul>
-                    <li>MATLAB tension/compression modeling</li>
-                    <li>Factor of safety calculations</li>
-                    <li>Member buckling analysis</li>
-                    <li>Load path evaluation</li>
-                </ul>
+        <section class="project-section image-section">
+            <div class="image-placeholder">
+                <p>Image 2: Construction Process</p>
             </div>
+        </section>
 
-            <div class="column">
-                <h3>Design</h3>
-                <ul>
-                    <li>Hand-sketched truss concepts</li>
-                    <li>SolidWorks iterative geometry refinement</li>
-                    <li>Member weight optimization</li>
-                    <li>Pentagonal frame layout</li>
-                </ul>
-            </div>
+        <section class="project-section">
+            <h2>Design Process</h2>
+            <ul>
+                <li><strong>Analysis:</strong> MATLAB tension/compression modeling, factor of safety calculations, member buckling analysis</li>
+                <li><strong>Design:</strong> Hand-sketched truss concepts, SolidWorks iterative geometry refinement, pentagonal frame layout</li>
+                <li><strong>Manufacturing:</strong> Balsa wood laser cutting, precision sanding & trimming, high-strength adhesive bonding</li>
+            </ul>
+        </section>
 
-            <div class="column">
-                <h3>Manufacturing</h3>
-                <ul>
-                    <li>Balsa wood laser cutting</li>
-                    <li>Precision sanding & trimming</li>
-                    <li>High-strength adhesive bonding</li>
-                    <li>Scaled prototype assembly</li>
-                </ul>
+        <section class="project-section image-section">
+            <div class="image-placeholder">
+                <p>Image 3: Final Testing</p>
             </div>
-        </div>
+        </section>
 
-        <!-- OUTCOME -->
-        <div class="section-row reverse">
-            <div class="section-image">
-                <img src="../Bauersfeld, Egan.jpg" alt="Testing Photo">
-            </div>
-            <div class="section-text">
-                <h2>Outcome</h2>
-                <p>
-                    The truss carried a load far exceeding the design requirement before failure.
-                    This project strengthened my understanding of structural behavior and 
-                    demonstrated how analytical design translates to physical performance.
-                </p>
-            </div>
-        </div>
-
-    </div>
+        <section class="project-section">
+            <h2>Outcome</h2>
+            <p>The truss carried a load far exceeding the design requirement before failure. This project strengthened my understanding of structural behavior and demonstrated how analytical design translates to physical performance.</p>
+        </section>
+    </main>
 
     <!-- FOOTER -->
-    <div class="footer">
+    <footer class="footer">
         <p>
             <a href="mailto:eganbauersfeld@gmail.com">eganbauersfeld@gmail.com</a> •
             <a href="https://www.linkedin.com/in/egan-bauersfeld" target="_blank">LinkedIn</a>
         </p>
-    </div>
-
+    </footer>
 </body>
 </html>

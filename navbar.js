@@ -9,6 +9,8 @@ function loadNavbar() {
                     <div class="dropdown-content">
                         <a href="/projects/food-finder.html">Food Finder — Smart Shelf System</a>
                         <a href="/projects/truss-project.html">Truss Design Project</a>
+                        <a href="/projects/thermodynamics-turbine.html">Thermodynamics Turbine</a>
+                        <a href="/projects/ff-oct.html">FF-OCT Project</a>
                     </div>
                 </div>
 

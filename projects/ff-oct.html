@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FF-OCT Project</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div id="navbar-container"></div>
+    <script src="../navbar.js"></script>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <h1 class="hero-title">FF-OCT Project</h1>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="project-content">
+        <section class="project-section">
+            <h2>Project Overview</h2>
+            <p>The FF-OCT (Full-Field Optical Coherence Tomography) project focuses on advanced optical imaging techniques. This research project explores innovative applications of OCT technology for high-resolution imaging and analysis.</p>
+        </section>
+
+        <!-- IMAGE GALLERY -->
+        <section class="project-section">
+            <h2>Project Gallery</h2>
+            <div class="image-gallery">
+                <div class="image-placeholder gallery-image active">
+                    <p>Image 1</p>
+                </div>
+                <div class="image-placeholder gallery-image">
+                    <p>Image 2</p>
+                </div>
+                <div class="image-placeholder gallery-image">
+                    <p>Image 3</p>
+                </div>
+                <div class="image-placeholder gallery-image">
+                    <p>Image 4</p>
+                </div>
+
+                <button class="gallery-arrow left" onclick="changeImage(-1)">‹</button>
+                <button class="gallery-arrow right" onclick="changeImage(1)">›</button>
+
+                <div class="gallery-controls">
+                    <button class="gallery-btn" onclick="setImage(0)">1</button>
+                    <button class="gallery-btn" onclick="setImage(1)">2</button>
+                    <button class="gallery-btn" onclick="setImage(2)">3</button>
+                    <button class="gallery-btn" onclick="setImage(3)">4</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>My Role</h2>
+            <p>I contributed to the optical system design, data acquisition, and image processing pipeline. My work involved optimizing imaging parameters and developing analysis tools for high-resolution optical data.</p>
+        </section>
+
+        <section class="project-section image-section">
+            <div class="image-placeholder">
+                <p>Additional Image: System Setup</p>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>Technical Details</h2>
+            <ul>
+                <li>Full-field optical coherence tomography implementation</li>
+                <li>High-resolution 3D imaging capabilities</li>
+                <li>Advanced image processing and reconstruction algorithms</li>
+                <li>Optical system design and optimization</li>
+            </ul>
+        </section>
+
+        <!-- SCIENTIFIC POSTER SECTION -->
+        <section class="project-section poster-section">
+            <h2>Research Poster</h2>
+            <div class="poster-placeholder">
+                <p>Scientific Poster - Place your poster image here</p>
+            </div>
+        </section>
+
+        <section class="project-section">
+            <h2>Outcome</h2>
+            <p>This research project advanced the field of optical imaging and provided valuable insights into OCT technology applications. The work contributed to ongoing research in biomedical imaging and optical systems.</p>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>
+            <a href="mailto:eganbauersfeld@gmail.com">eganbauersfeld@gmail.com</a> •
+            <a href="https://www.linkedin.com/in/egan-bauersfeld" target="_blank">LinkedIn</a>
+        </p>
+    </footer>
+
+    <!-- Gallery JavaScript -->
+    <script>
+        let currentImage = 0;
+        const images = document.querySelectorAll('.gallery-image');
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        function changeImage(direction) {
+            currentImage += direction;
+            if (currentImage < 0) currentImage = images.length - 1;
+            if (currentImage >= images.length) currentImage = 0;
+            showImage(currentImage);
+        }
+
+        function setImage(index) {
+            currentImage = index;
+            showImage(currentImage);
+        }
+    </script>
+</body>
+</html>
