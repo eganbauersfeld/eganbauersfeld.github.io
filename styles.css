@@ -289,6 +289,52 @@ main {
     color: #374151;
 }
 
+.role-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.role-box {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    aspect-ratio: 1;
+}
+
+.role-box h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+    color: #1a1a1a;
+}
+
+.role-box p {
+    font-family: Georgia, serif;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: #374151;
+}
+
+.image-placeholder-square {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #f3f4f6;
+    border: 2px dashed #d1d5db;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-size: 1rem;
+}
+
 /* ===== FF-OCT SPECIFIC ===== */
 .image-gallery {
     position: relative;
@@ -446,6 +492,10 @@ footer a:hover {
     .process-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+
+    .role-image-grid {
+        grid-template-columns: 1fr;
     }
 
     .project-header h1 {
