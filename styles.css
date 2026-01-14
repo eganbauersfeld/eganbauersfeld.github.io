@@ -297,10 +297,6 @@ main {
 }
 
 .role-box {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.75rem;
-    padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
