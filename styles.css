@@ -108,30 +108,23 @@ body {
 
 /* HERO SECTION */
 .hero {
-    position: relative;
-    height: 400px;
-    background-image: url("Bauersfeld, Egan.jpg");
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 100px 40px;
+    text-align: center;
 }
 
 .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
+    display: none;
 }
 
 .hero-title {
-    position: relative;
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: bold;
     color: white;
-    z-index: 2;
     text-align: center;
     padding: 0 20px;
+    margin: 0;
+    letter-spacing: -0.5px;
 }
 
 /* PROJECT CONTENT */
@@ -310,6 +303,10 @@ body {
     .nav-links {
         flex-direction: column;
         gap: 15px;
+    }
+
+    .hero {
+        padding: 60px 20px;
     }
 
     .hero-title {
