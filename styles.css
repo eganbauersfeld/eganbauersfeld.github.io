@@ -141,6 +141,27 @@ main {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.projects-hero {
+    min-height: auto;
+    padding: 4rem 0 2rem 0;
+    text-align: center;
+}
+
+.projects-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.projects-hero p {
+    font-family: Georgia, serif;
+    font-size: 1.25rem;
+    color: #6b7280;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 /* ===== PROJECT GRID ===== */
 .projects-section {
     padding: 4rem 0;
