@@ -1,0 +1,200 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectTile from '../components/ProjectTile.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.index.localeCompare(b.data.index));
+
+const large = projects.find((p) => p.data.heroTile.size === 'large');
+const mediums = projects.filter((p) => p.data.heroTile.size === 'medium');
+const smalls = projects.filter((p) => p.data.heroTile.size === 'small');
+---
+
+<BaseLayout title="Egan Bauersfeld — Integrated Design Engineer">
+  <main class="home">
+    <div class="home__header">
+      <a href="/about/" class="home__header-link">
+        <div>
+          <div class="home__eyebrow">Integrated Design Engineer — CU Boulder</div>
+          <div class="home__name">Egan Bauersfeld</div>
+        </div>
+        <div class="home__meta">Mechanical Emphasis · Class of &rsquo;28</div>
+      </a>
+    </div>
+
+    <div class="home__hero-grid">
+      {large && (
+        <div class="home__hero-large">
+          <ProjectTile
+            href={`/projects/${large.id}/`}
+            index={large.data.index}
+            title={large.data.homeTileTitle ?? large.data.indexTitle}
+            typeLabel={large.data.homeSubtitle}
+            accentColor="#8a9678"
+            size="large"
+          />
+        </div>
+      )}
+      <div class="home__hero-stack">
+        {mediums.map((project, i) => (
+          <div class="home__hero-stack-item">
+            <ProjectTile
+              href={`/projects/${project.id}/`}
+              index={project.data.index}
+              title={project.data.homeTileTitle ?? project.data.indexTitle}
+              typeLabel={project.data.homeSubtitle}
+              accentColor={i === 0 ? '#c2a968' : '#7d8fa6'}
+              size="medium"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="home__small-grid">
+      {smalls.map((project, i) => (
+        <ProjectTile
+          href={`/projects/${project.id}/`}
+          index={project.data.index}
+          title={project.data.homeTileTitle ?? project.data.indexTitle}
+          typeLabel={project.data.homeSubtitle}
+          accentColor={['#a15c3e', '#4b4a3d', '#93807a'][i % 3]}
+          size="small"
+        />
+      ))}
+      <a href="/media/" class="home__media-tile">
+        <span class="home__media-title">Media</span>
+        <span class="home__media-type">Video · Literature</span>
+      </a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .home {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 64px 48px 100px;
+    background: var(--color-bg);
+  }
+
+  .home__header-link {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    color: inherit !important;
+  }
+
+  .home__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-brick);
+  }
+
+  .home__name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 58px;
+    color: var(--color-ink);
+    line-height: 1.05;
+    margin-top: 6px;
+  }
+
+  .home__meta {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent-brick);
+  }
+
+  .home__hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 22px;
+    margin-top: 36px;
+  }
+
+  .home__hero-large {
+    height: 486px;
+  }
+
+  .home__hero-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .home__hero-stack-item {
+    height: 232px;
+  }
+
+  .home__small-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-top: 22px;
+  }
+
+  .home__small-grid > :global(*) {
+    height: 230px;
+  }
+
+  .home__media-tile {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #6b4a3a;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 16px 18px;
+    color: var(--color-surface) !important;
+    transition: transform var(--duration-standard) var(--ease-standard);
+  }
+
+  .home__media-tile:hover {
+    transform: scale(1.01);
+    color: var(--color-surface) !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home__media-tile {
+      transition: none;
+    }
+    .home__media-tile:hover {
+      transform: none;
+    }
+  }
+
+  .home__media-title {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 19px;
+  }
+
+  .home__media-type {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: color-mix(in srgb, var(--color-surface) 87%, transparent);
+    margin-top: 3px;
+  }
+
+  @media (max-width: 900px) {
+    .home {
+      padding: 48px 24px 80px;
+    }
+    .home__hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .home__hero-large {
+      height: 320px;
+    }
+    .home__small-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

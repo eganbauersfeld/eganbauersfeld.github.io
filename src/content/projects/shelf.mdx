@@ -1,0 +1,48 @@
+---
+type: build
+title: Web-Connected Smart Shelf Insert
+indexTitle: Smart accessible pantry shelf
+homeTileTitle: Smart pantry shelf
+index: '04'
+accentColor: '#7d8874'
+typeLabel: Build / Product
+homeSubtitle: 'Build · Product'
+byline: 'Project Manager + Mechanical Design Engineer · 5-person team'
+heroTile:
+  size: small
+specBar:
+  - label: Fab Method
+    value: CAD modeling + iterative prototyping
+  - label: Materials
+    value: Mechanical + electrical + digital systems
+  - label: Client
+    value: Community pantry accessibility
+  - label: Status
+    value: Best in Section, CU Fall Expo
+footerLine: 'Outcome: awarded Best in Section, CU Engineering Fall Design Expo'
+---
+
+import AlternatingBlock from '../../components/AlternatingBlock.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import ConstraintsGrid from '../../components/ConstraintsGrid.astro';
+import assembled from '../../assets/images/shelf/assembled.jpg';
+import cad from '../../assets/images/shelf/cad.jpg';
+
+<AlternatingBlock image={assembled} alt="photo: fully assembled shelf system" side="left" aspectRatio="3/4">
+<h3>Overview</h3>
+<p>A web-connected smart shelf system that improves accessibility in community pantries by tracking real-time inventory. As project manager and mechanical design engineer, I led a five-person team integrating mechanical, electrical, and digital design goals into a functional prototype that was awarded Best in Section at the CU Engineering Fall Design Expo.</p>
+</AlternatingBlock>
+
+<AlternatingBlock image={cad} alt="CAD: shelf insert model" side="right">
+<h3>My role</h3>
+<p>I led the mechanical design using CAD modeling and prototyping to develop the physical system. I collaborated with the five-person team to integrate mechanical, electrical, and digital design goals, conducting testing and iteration to improve durability, compatibility, and assembly efficiency.</p>
+</AlternatingBlock>
+
+<ConstraintsGrid columns={2} items={[
+  { label: 'Technical features', body: 'CAD modeling and iterative prototyping<br />Integration of mechanical, electrical, and digital systems', accentColor: '#7d8874' },
+  { label: '', body: 'Testing and iteration for improved durability and compatibility<br />Optimized for assembly efficiency and real-world deployment', accentColor: '#7d8874' },
+]} />
+
+<PullQuote accentColor="#7d8874">
+Awarded Best in Section for excellence in product development, analysis, and presentation — the project demonstrated cross-disciplinary engineering skills applied to a community accessibility challenge.
+</PullQuote>

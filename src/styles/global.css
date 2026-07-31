@@ -1,0 +1,80 @@
+/* Design tokens — Egan Bauersfeld portfolio */
+
+:root {
+  /* Surfaces */
+  --color-bg: #e8dfc9;
+  --color-surface: #f0ead8;
+
+  /* Accent palette — one per project/section */
+  --accent-sage: #7d8874;
+  --accent-slate: #6f7a86;
+  --accent-ochre: #ab9668;
+  --accent-brick: #8f5738;
+  --accent-warm-gray: #5c584c;
+  --accent-mauve-brown: #8a7568;
+
+  /* Text */
+  --color-ink: #2e2a20;
+  --color-body: #3a3628;
+  --color-body-soft: #4a4536;
+  --color-muted: #5c584c;
+
+  /* Fonts */
+  --font-display: 'Playfair Display', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-standard: 300ms;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-bg);
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-body);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent-brick);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+a:hover {
+  color: var(--accent-slate);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

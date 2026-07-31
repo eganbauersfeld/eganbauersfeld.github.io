@@ -1,0 +1,94 @@
+---
+type: build
+title: Adaptive Racket Gauntlet
+indexTitle: Adaptive racket gauntlet
+index: '01'
+accentColor: '#8f5738'
+typeLabel: Build / Adaptive PE
+homeSubtitle: 'Build · Client-focused product, Adaptive physical education'
+byline: 'Team BEARGE, CU Boulder GEEN 2400 · Client: Sarah Brockberg, D49 Adapted PE · Spring–Fall 2026'
+heroTile:
+  size: large
+specBar:
+  - label: Fab Method
+    value: FDM 3D printing, assembly
+  - label: Materials
+    value: PLA, industrial Velcro, neoprene
+  - label: Role
+    value: Project manager, Client communications, Mechanical design + fabrication
+externalLink:
+  label: Full StrikeToo project site ↗
+  href: 'https://eganbauersfeld.github.io/striketoo/index.html'
+footerLine: 'Materials: flexible-mesh PLA, Velcro (mitten retired) · Status: iteration 2.0 in development, next 40-min wearability trial'
+---
+
+import AlternatingBlock from '../../components/AlternatingBlock.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import adaptivePe from '../../assets/images/gauntlet/adaptive-pe.jpg';
+import flexMesh from '../../assets/images/gauntlet/flex-mesh.png';
+import outreachNotes from '../../assets/images/gauntlet/outreach-notes.webp';
+import cadV1 from '../../assets/images/gauntlet/cad-v1-2.png';
+import mvpFieldTest from '../../assets/images/gauntlet/mvp-field-test.png';
+import reshapedV2 from '../../assets/images/gauntlet/reshaped-v2.webp';
+
+<AlternatingBlock image={adaptivePe} alt="photo: adaptive PE class, striking-sport participation" side="left">
+<h3>The problem</h3>
+<p>Our client works with low-mobility students in adaptive physical education who often struggle to simultaneously grasp an object, control its movement, and accurately aim it toward a target. These combined motor demands create real barriers to participation in racket-based sports — and to the coordination, endurance, and social development that come with them.</p>
+</AlternatingBlock>
+
+<PullQuote accentColor="#8f5738">
+We learned we needed to find the problem before we could solve it — the client search was its own design constraint.
+</PullQuote>
+
+<AlternatingBlock image={outreachNotes} alt="photo: outreach emails / client intake notes" side="right">
+<span class="alt-block__eyebrow" style="color:#8f5738">Finding the client</span>
+<h3>Sourcing the project from scratch</h3>
+<p>Our course required each team to identify and secure its own client rather than pick from an assigned list. I led that outreach: cold-emailing adaptive PE and special-education programs across the district, following up with phone calls, and pitching the team's design capabilities before a problem was even defined. Sarah Brockberg at D49 Adapted PE responded, and I ran the intake conversations that turned her day-to-day classroom frustration into a scoped engineering problem.</p>
+</AlternatingBlock>
+
+<PullQuote accentColor="#8f5738">
+Students should not have to adapt to existing equipment, the equipment should adapt to the student.
+</PullQuote>
+
+<AlternatingBlock image={cadV1} alt="CAD: forearm gauntlet v1 / v1.2" side="right">
+<h3>Prototype v1 — forearm gauntlet</h3>
+<p>Modeled after AFO (ankle-foot orthosis) bracing principles, the gauntlet is a rigid forearm shell that mounts the racket to the limb instead of the hand, removing grip from the equation entirely. Sarah, our APE-teacher client, confirmed this eliminated the single biggest barrier for her students: many have limited or no active hand function.</p>
+</AlternatingBlock>
+
+<PullQuote accentColor="#8f5738">
+Testing and client feedback revealed an ergonomic issue. The wrist was bent back, and dorsiflexion is not a viable resting position for the majority of Sarah's students.
+</PullQuote>
+
+<AlternatingBlock image={mvpFieldTest} alt="photo: MVP field test, CU Rec Center courts" side="left">
+<h3>MVP field test</h3>
+<p>Redesigned around a neutral wrist position, the MVP introduced two parallel attachments. A fabric mitten and PLA plate, and the redesigned gauntlet attachment connected to the racket via a box-and-slot system cinched with hook and loop fabric. Twenty minutes of live badminton play, including serves and overhead strikes, validated the mechanical interface with zero rotational slippage on the gauntlet.</p>
+</AlternatingBlock>
+
+<AlternatingBlock image={reshapedV2} alt="photo: reshaped v2 wrist/elbow clearance" side="right">
+<h3>Roadmap: iteration 2.0</h3>
+<p>Testing surfaced a second pain point beyond grip: comfort. Rigid PLA geometry pinched at the wrist and elbow, and dense internal print supports created a 30-minute post-processing bottleneck per unit. The next iteration targets manufacturing optimization, joint clearance, and a universal ergonomic pass across both the mitten and plate variants.</p>
+</AlternatingBlock>
+
+<PullQuote accentColor="#8f5738">
+Further testing showed the fabric mitten was never load-bearing or necessary as the gauntlet alone held the racket with zero slippage.
+</PullQuote>
+
+<AlternatingBlock image={flexMesh} alt="photo: one-way flexible PLA mesh prototype" side="left" aspectRatio="3/4" rotate={270}>
+<h3>Iteration 3.0 — one-way flexible mesh</h3>
+<p>To solve the comfort problem without giving up rigidity where it mattered, we redesigned the shell around a one-way flexible PLA mesh: a print pattern that lets the gauntlet flex at the wrist and elbow along one axis while staying stiff against the racket's torque loads. It eliminated the pinch points and the 30-minute support-removal steps and made the print faster and simpler. Now anyone with a 3D printer can go to our website and print the gauntlet themselves, for free.</p>
+</AlternatingBlock>
+
+<div class="data-table-wrap">
+  <h3 class="data-table-heading">Performance data</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Metric</th><th>Target</th><th>Actual</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Total weight</td><td>&lt; 1.0 lb</td><td>&#126;0.25 lb</td><td class="status-validated">Validated</td></tr>
+      <tr><td>Production cost</td><td>&lt; $5.00</td><td>&#126;$3.15</td><td class="status-validated">Validated</td></tr>
+      <tr><td>Grip dependency</td><td>0% active grip</td><td>0% active grip</td><td class="status-validated">Validated</td></tr>
+      <tr><td>Assembly effort</td><td>Low effort</td><td>&#126;5 min/unit</td><td class="status-validated">Validated</td></tr>
+    </tbody>
+  </table>
+</div>

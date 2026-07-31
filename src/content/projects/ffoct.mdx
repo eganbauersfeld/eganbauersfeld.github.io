@@ -1,0 +1,70 @@
+---
+type: research
+title: Full-Field Optical Coherence Tomography Imaging Rig
+indexTitle: Full-field optical imaging rig
+index: '03'
+accentColor: '#6f7a86'
+typeLabel: Research / Optics
+homeSubtitle: 'Research · FF-OCT, CSU Wilson Lab'
+byline: 'Undergraduate Optics Researcher · CSU Wilson Laboratory'
+heroTile:
+  size: medium
+specBar:
+  - label: Setup / Apparatus
+    value: Linnik interferometry rig
+  - label: Techniques
+    value: Alignment, calibration, z-stack acquisition
+  - label: Role
+    value: Mechanical design + optical alignment
+footerLine: 'Status: co-authored conference paper · procedures in active lab use'
+---
+
+import AlternatingBlock from '../../components/AlternatingBlock.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import { Image } from 'astro:assets';
+import setupPhoto from '../../assets/images/ffoct/setup.jpg';
+import clipV1 from '../../assets/images/ffoct/clip-v1.png';
+import clipV2 from '../../assets/images/ffoct/clip-v2.png';
+import holderAction from '../../assets/images/ffoct/holder-action.jpg';
+import graph from '../../assets/images/ffoct/graph.png';
+
+<AlternatingBlock image={setupPhoto} alt="photo: FF-OCT setup 2.0" side="left">
+<h3>Overview</h3>
+<p>This undergraduate research position at CSU's Wilson Laboratory focused on developing FF-OCT (Full-Field Optical Coherence Tomography) imaging systems for depth-scans of biological samples. The work involved designing custom mechanical components, performing high-precision optical alignments, and developing standardized procedures for the lab's optical imaging research.</p>
+</AlternatingBlock>
+
+<div class="gallery-heading" style="color:#6f7a86">Project gallery</div>
+<div class="gallery-grid">
+  <div class="gallery-grid__item"><Image src={clipV1} alt="CAD: slide clip design, v1.0" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 420px" /></div>
+  <div class="gallery-grid__item"><Image src={holderAction} alt="photo: slide holder in action" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 420px" /></div>
+</div>
+
+<AlternatingBlock image={clipV2} alt="CAD: custom slide clip, v2.0" side="right">
+<h3>My role</h3>
+<p>As Undergraduate Optics Researcher, I designed and fabricated custom mechanical components to enable optical system functionality, including retrofitting outdated or incompatible technology when commercial solutions weren't available. I performed high-precision alignments in a Linnik interferometry configuration and developed FF-OCT procedures — alignment sequences, calibration routines, and z-stack acquisition plans — while collaborating with lab members to standardize those procedures and co-author a conference paper, all backed by detailed lab records for reproducibility.</p>
+</AlternatingBlock>
+
+<div class="tech-details">
+  <h3>Technical details</h3>
+  <ul>
+    <li>Custom mechanical component design and fabrication for optical systems</li>
+    <li>High-precision optical alignments in Linnik interferometry configuration</li>
+    <li>Development of FF-OCT procedures: alignment sequences, calibration routines, z-stack acquisition</li>
+    <li>Retrofitting outdated or incompatible technology when commercial solutions were unavailable</li>
+    <li>Detailed lab documentation for reproducibility and collaboration</li>
+  </ul>
+</div>
+
+<PullQuote accentColor="#6f7a86">
+Detailed lab documentation for reproducibility enabled continued research and collaboration within the Wilson Laboratory.
+</PullQuote>
+
+<AlternatingBlock image={graph} alt="graph: FF-OCT results, noise-corrected" side="left">
+<h3>Outcome</h3>
+<p>Successfully developed standardized procedures for FF-OCT operation and contributed to a conference paper as co-author. The custom mechanical solutions and detailed documentation enabled continued research and collaboration within the Wilson Laboratory, advancing the capabilities of the optical imaging system.</p>
+</AlternatingBlock>
+
+<a id="ffoct-paper" class="paper-link" href="/docs/ffoct-paper.pdf" target="_blank" rel="noopener" style="border-color:#6f7a86">
+  <div class="paper-link__label">Conference paper</div>
+  <div class="paper-link__body">Co-authored with the Wilson Laboratory team — click to read the full paper.</div>
+</a>

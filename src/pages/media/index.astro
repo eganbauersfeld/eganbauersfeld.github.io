@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const YOUTUBE_ID = 'gHiFUJXJCX8';
+---
+
+<BaseLayout title="Media — Egan Bauersfeld">
+  <main class="media">
+    <h1 class="media__heading">Media</h1>
+    <div class="media__columns">
+      <div class="media__video-col">
+        <a
+          href={`https://youtu.be/${YOUTUBE_ID}`}
+          target="_blank"
+          rel="noopener"
+          class="media__video"
+          style={`background-image:url('https://img.youtube.com/vi/${YOUTUBE_ID}/hqdefault.jpg')`}
+        >
+          <span class="media__play">
+            <span class="media__play-triangle"></span>
+          </span>
+        </a>
+        <div class="media__video-caption">Video Production — watch on YouTube ↗</div>
+      </div>
+      <div class="media__docs-col">
+        <div class="media__docs-label">Reading / documentation</div>
+        <a href="https://drive.google.com/file/d/1MtddAQwfAI3dwzuSSjSVHqAC6u5Vz3RX/view?usp=sharing" target="_blank" rel="noopener" class="media__doc-row">Wool Research Booklet</a>
+        <a href="https://drive.google.com/file/d/1Mm3gpe_9LOotXZ9a7IHZdoauFPDf0SFE/view?usp=sharing" target="_blank" rel="noopener" class="media__doc-row">FF-OCT Conference Paper</a>
+        <a href="https://drive.google.com/file/d/1E5pl14coQN70MRBbji3_6KjznPQ8y8e3/view?usp=sharing" target="_blank" rel="noopener" class="media__doc-row media__doc-row--last">
+          ENLP Global Intensive: East Africa Reflection Report
+        </a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .media {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 64px 48px 120px;
+  }
+
+  .media__heading {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 40px;
+    color: var(--color-ink);
+    margin: 0 0 40px;
+    font-weight: 400;
+  }
+
+  .media__columns {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .media__video-col {
+    flex: 2;
+    min-width: 340px;
+  }
+
+  .media__video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: 1px solid color-mix(in srgb, var(--accent-brick) 27%, transparent);
+    position: relative;
+    background-color: var(--color-ink);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .media__play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .media__play-triangle {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--color-ink) 80%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .media__play-triangle::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+    border-left: 20px solid var(--color-surface);
+    margin-left: 5px;
+  }
+
+  .media__video-caption {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-muted);
+    margin-top: 12px;
+  }
+
+  .media__docs-col {
+    flex: 1;
+    min-width: 260px;
+  }
+
+  .media__docs-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    margin-bottom: 16px;
+  }
+
+  .media__doc-row {
+    display: block;
+    padding: 18px 0;
+    border-top: 1px solid color-mix(in srgb, var(--color-ink) 13%, transparent);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--color-ink) !important;
+  }
+
+  .media__doc-row--last {
+    border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 13%, transparent);
+  }
+
+  @media (max-width: 640px) {
+    .media {
+      padding: 48px 24px 80px;
+    }
+  }
+</style>

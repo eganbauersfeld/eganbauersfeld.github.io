@@ -1,0 +1,68 @@
+---
+const RESUME_HREF = '/docs/Egan-Bauersfeld-Resume.pdf';
+const LINKEDIN_HREF = 'https://www.linkedin.com/in/egan-bauersfeld';
+---
+
+<nav class="nav">
+  <a href="/" class="nav__name">Egan Bauersfeld</a>
+  <div class="nav__links">
+    <a href="/projects/" class="nav__link">Projects</a>
+    <a href="/media/" class="nav__link">Media</a>
+    <a href="/about/" class="nav__link">About</a>
+    <a href={RESUME_HREF} target="_blank" rel="noopener" class="nav__link">Resume</a>
+    <a href={LINKEDIN_HREF} target="_blank" rel="noopener" class="nav__link">LinkedIn</a>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: color-mix(in srgb, var(--color-bg) 93%, transparent);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 9%, transparent);
+  }
+
+  .nav__name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--color-ink) !important;
+  }
+
+  .nav__name:hover {
+    color: var(--color-ink) !important;
+  }
+
+  .nav__links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .nav__link {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-body) !important;
+  }
+
+  .nav__link:hover {
+    color: var(--accent-brick) !important;
+  }
+
+  @media (max-width: 640px) {
+    .nav {
+      padding: 16px 20px;
+    }
+    .nav__links {
+      gap: 16px;
+    }
+  }
+</style>

@@ -1,0 +1,112 @@
+---
+interface Props {
+  href: string;
+  index: string;
+  title: string;
+  typeLabel: string;
+  accentColor: string;
+  size: 'large' | 'medium' | 'small';
+}
+
+const { href, index, title, typeLabel, accentColor, size } = Astro.props;
+---
+
+<a href={href} class:list={['tile', `tile--${size}`]} style={`background:${accentColor}`}>
+  <span class="tile__index">{index}</span>
+  <span class="tile__title">{title}</span>
+  <span class="tile__type">{typeLabel}</span>
+</a>
+
+<style>
+  .tile {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    color: var(--color-surface) !important;
+    transition: transform var(--duration-standard) var(--ease-standard);
+  }
+
+  .tile:hover {
+    transform: scale(1.01);
+    color: var(--color-surface) !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tile {
+      transition: none;
+    }
+    .tile:hover {
+      transform: none;
+    }
+  }
+
+  .tile__index {
+    position: absolute;
+    font-family: var(--font-mono);
+    color: var(--color-surface);
+  }
+
+  .tile__title {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--color-surface);
+    line-height: 1.1;
+  }
+
+  .tile__type {
+    font-family: var(--font-body);
+    color: color-mix(in srgb, var(--color-surface) 87%, transparent);
+  }
+
+  .tile--large {
+    padding: 24px 26px;
+  }
+  .tile--large .tile__index {
+    top: 20px;
+    left: 24px;
+    font-size: 14px;
+  }
+  .tile--large .tile__title {
+    font-size: 34px;
+  }
+  .tile--large .tile__type {
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  .tile--medium {
+    padding: 18px 20px;
+  }
+  .tile--medium .tile__index {
+    top: 16px;
+    left: 18px;
+    font-size: 13px;
+  }
+  .tile--medium .tile__title {
+    font-size: 22px;
+  }
+  .tile--medium .tile__type {
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  .tile--small {
+    padding: 16px 18px;
+  }
+  .tile--small .tile__index {
+    top: 14px;
+    left: 16px;
+    font-size: 12px;
+  }
+  .tile--small .tile__title {
+    font-size: 19px;
+  }
+  .tile--small .tile__type {
+    font-size: 11px;
+    margin-top: 3px;
+  }
+</style>

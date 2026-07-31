@@ -1,0 +1,49 @@
+---
+type: build
+title: 1.5×-Rated Load-Bearing Truss
+indexTitle: 1.5×-rated load-bearing truss
+homeTileTitle: Load-bearing truss
+index: '05'
+accentColor: '#ab9668'
+typeLabel: Build / Structures
+homeSubtitle: 'Build · Statics'
+byline: 'CAD Engineer · Statics coursework project'
+heroTile:
+  size: small
+specBar:
+  - label: Fab Method
+    value: CAD + MATLAB/Excel, hand fabrication
+  - label: Materials
+    value: Structural members, gusset plates
+  - label: Review
+    value: Professional engineer sign-off
+  - label: Status
+    value: Validated at 1.5× required load
+footerLine: 'Materials: structural members, gusset plates · Status: load-tested to 1.5× spec'
+---
+
+import AlternatingBlock from '../../components/AlternatingBlock.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import ConstraintsGrid from '../../components/ConstraintsGrid.astro';
+import render from '../../assets/images/truss/render.png';
+import loadTest from '../../assets/images/truss/load-test.jpg';
+
+<AlternatingBlock image={render} alt="render: final truss design" side="left">
+<h3>Overview</h3>
+<p>Designing, analyzing, and fabricating a truss to meet specific load requirements. As CAD engineer, I produced complete engineering drawings for professional review and led the hands-on manufacturing process.</p>
+</AlternatingBlock>
+
+<ConstraintsGrid columns={3} items={[
+  { label: 'Analysis', body: 'MATLAB/Excel structural analysis, integrating material test data to calculate safety factors and predict failure modes.', accentColor: '#ab9668' },
+  { label: 'Design', body: 'Complete CAD models and engineering drawings, evaluating geometry, member sizing, and gusset connections.', accentColor: '#ab9668' },
+  { label: 'Manufacturing', body: 'Hands-on manufacturing and assembly, with technical reports detailing material testing and analysis.', accentColor: '#ab9668' },
+]} />
+
+<PullQuote accentColor="#ab9668">
+The 22 by 7 inch truss performed with a safety factor of 1.5, withstanding just over 1400 kN.
+</PullQuote>
+
+<AlternatingBlock image={loadTest} alt="photo: 4-point load test" side="right" fit="contain">
+<h3>Outcome</h3>
+<p>This project demonstrated how engineering analysis and material testing translate to real-world performance through detailed documentation and hands-on fabrication.</p>
+</AlternatingBlock>

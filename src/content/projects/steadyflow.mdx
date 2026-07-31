@@ -1,0 +1,44 @@
+---
+type: build
+title: Compressed-Air Turbine Rig
+indexTitle: Compressed-air turbine rig
+index: '06'
+accentColor: '#5c584c'
+typeLabel: Build / Thermo
+homeSubtitle: 'Build · Thermodynamics'
+byline: 'Thermodynamics steady-flow device · Coursework project'
+heroTile:
+  size: small
+specBar:
+  - label: Fab Method
+    value: SolidWorks modeling + Arduino DAQ
+  - label: Materials
+    value: Fan blades, compressed-air rig, sensors
+  - label: Analysis
+    value: EES thermodynamic modeling
+footerLine: 'Materials: SolidWorks-modeled fan blades, Arduino DAQ · Status: complete, results validated'
+---
+
+import AlternatingBlock from '../../components/AlternatingBlock.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import render from '../../assets/images/turbine/render.png';
+import daq from '../../assets/images/turbine/daq.png';
+
+<AlternatingBlock image={render} alt="render: fan blade + rig design" side="left">
+<h3>Overview</h3>
+<p>Designing and testing a steady-flow device using compressed air — modeling fan blade components in SolidWorks, implementing Arduino-based data acquisition, and running thermodynamic analysis to compare measured flow with theoretical predictions.</p>
+</AlternatingBlock>
+
+<AlternatingBlock image={daq} alt="photo: Arduino DAQ test setup" side="right">
+<h3>My role</h3>
+<p>I modeled fan blades and airflow components in SolidWorks and assembled the compressed-air test rig, then implemented an Arduino-based data acquisition setup to read, convert, and record flow measurements for EES-based analysis.</p>
+</AlternatingBlock>
+
+<PullQuote accentColor="#5c584c">
+The Arduino data acquisition system provided accurate flow measurements that validated our EES-based thermodynamic predictions.
+</PullQuote>
+
+<div class="single-col">
+  <h3>Outcome</h3>
+  <p>Demonstrated the integration of mechanical design, electronics, and thermodynamic theory in one working test rig, with measured data lining up against theoretical predictions.</p>
+</div>

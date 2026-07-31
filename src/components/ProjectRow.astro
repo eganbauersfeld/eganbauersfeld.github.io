@@ -1,0 +1,70 @@
+---
+interface Props {
+  href: string;
+  index: string;
+  name: string;
+  typeLabel: string;
+  accentColor: string;
+}
+
+const { href, index, name, typeLabel, accentColor } = Astro.props;
+---
+
+<a href={href} class="project-row">
+  <div class="project-row__left">
+    <div class="project-row__index" style={`color:${accentColor}`}>{index}</div>
+    <div class="project-row__name">{name}</div>
+  </div>
+  <div class="project-row__type">{typeLabel}</div>
+</a>
+
+<style>
+  .project-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 26px 0;
+    border-top: 1px solid color-mix(in srgb, var(--color-ink) 13%, transparent);
+    color: inherit !important;
+    transition: padding var(--duration-standard) var(--ease-standard);
+  }
+
+  .project-row:hover {
+    padding-left: 8px;
+    color: inherit !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .project-row {
+      transition: none;
+    }
+  }
+
+  .project-row__left {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+  }
+
+  .project-row__index {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    min-width: 24px;
+  }
+
+  .project-row__name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 30px;
+    color: var(--color-ink);
+  }
+
+  .project-row__type {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-muted);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+</style>

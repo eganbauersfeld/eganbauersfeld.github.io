@@ -1,0 +1,107 @@
+---
+type: field
+title: Sheep's Wool Fiber Research
+indexTitle: Sheep's wool fiber research
+index: '02'
+accentColor: '#8a7568'
+typeLabel: Research / Materials
+homeSubtitle: 'Research · Sustainable Materials'
+byline: 'University of Limerick, Architecture / Product Design · with Roadhán McKenna · supervised by Jan Frohburg'
+heroTile:
+  size: medium
+specBar:
+  - label: Location
+    value: Lonsdale Building, University of Limerick
+  - label: Method
+    value: Vacuum infusion + ASTM D7264 flexural testing
+  - label: Materials
+    value: Bio-epoxy resin + washed/unwashed wool, 10–25 wt%
+footerLine: 'Method: vacuum infusion + ASTM D7264 flexural testing · 24 bars tested'
+---
+
+import AlternatingBlock from '../../components/AlternatingBlock.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import { Image } from 'astro:assets';
+import rawWool from '../../assets/images/wool/raw-wool.webp';
+import vacuumInfusion from '../../assets/images/wool/vacuum-infusion.webp';
+import specimenCutting from '../../assets/images/wool/specimen-cutting.webp';
+import flexuralTestRig from '../../assets/images/wool/flexural-test-rig.webp';
+import chartStrength from '../../assets/images/wool/chart-strength.webp';
+import chartModulus from '../../assets/images/wool/chart-modulus.webp';
+import bookletCover from '../../assets/images/wool/booklet-cover.webp';
+import poster1 from '../../assets/images/wool/poster-1.webp';
+import poster2 from '../../assets/images/wool/poster-2.webp';
+import poster3 from '../../assets/images/wool/poster-3.webp';
+import poster4 from '../../assets/images/wool/poster-4.webp';
+
+<AlternatingBlock image={rawWool} alt="photo: raw wool, unwashed and washed" side="left">
+<span class="alt-block__eyebrow" style="color:#8a7568">Part 1 · The woolscape</span>
+<h3>Wool as waste</h3>
+<p>Sheep's wool has almost no commercial value in Ireland right now, despite how much of it exists. This project is an exploration of the Irish "woolscape", looking for real uses for the waste material. Through research and experimentation, we discovered whether waste wool needs to undergo resource-intensive washing to be used as an additive in plant-based epoxy.</p>
+</AlternatingBlock>
+
+<AlternatingBlock image={vacuumInfusion} alt="photo: vacuum infusion setup" side="right">
+<span class="alt-block__eyebrow" style="color:#8a7568">Part 2 · Method</span>
+<h3>Creating the materials</h3>
+<p>The host material was Easy Composites IB2 Epoxy Infusion Bio Resin, mixed 100:22 resin to hardener by weight. Wool was tested at 10, 15, 20, and 25 wt%, in both washed and unwashed condition, vacuum-infused into flat sheets and cut into standard bars. Twenty-four bars were created and mechanically tested in three-point bend per ASTM D7264.</p>
+</AlternatingBlock>
+
+<div class="gallery-grid">
+  <Image src={specimenCutting} alt="photo: specimen cutting" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 420px" />
+  <Image src={flexuralTestRig} alt="photo: flexural test rig, Lonsdale Basement" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 420px" />
+</div>
+
+<div class="single-col">
+  <span class="alt-block__eyebrow" style="color:#8a7568">Part 3 · Findings</span>
+  <h3>Washed vs. unwashed</h3>
+  <p>Unwashed wool performed comparably to washed wool across the loadings tested. Washing is a processing cost and a barrier to using waste wool at scale, so a result this close matters as it lowers the bar for putting the material to use.</p>
+</div>
+
+<PullQuote accentColor="#8a7568">
+Removing the washing process greatly reduces the energy required to process wool, and allows it to stay in Ireland
+</PullQuote>
+
+<div class="gallery-grid">
+  <Image src={chartStrength} alt="chart: flexural strength, washed vs. unwashed, by wt%" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 420px" />
+  <Image src={chartModulus} alt="chart: flexural modulus, washed vs. unwashed, by wt%" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 420px" />
+</div>
+
+<div class="single-col">
+  <span class="alt-block__eyebrow" style="color:#8a7568">Part 4 · Outputs</span>
+  <h3>Booklet and expo posters</h3>
+  <p>This page follows the same four-part structure as the printed booklet, and each section here will link straight through to its matching expo poster once the full set is finalized.</p>
+</div>
+
+<div id="wool-booklet" class="wool-booklet">
+  <a href="https://drive.google.com/file/d/1MtddAQwfAI3dwzuSSjSVHqAC6u5Vz3RX/view?usp=sharing" target="_blank" rel="noopener" class="wool-booklet__cover">
+    <Image src={bookletCover} alt="Booklet cover" style="width:100%;aspect-ratio:3/4;object-fit:cover;" widths={[220, 440]} sizes="220px" />
+    <div class="wool-booklet__caption">Research booklet (4-part)</div>
+  </a>
+  <div class="wool-booklet__posters">
+    <div><Image src={poster1} alt="Poster 1" style="width:100%;aspect-ratio:3/4;object-fit:cover;" widths={[220, 440]} sizes="220px" /><div class="wool-booklet__poster-index">01</div></div>
+    <div><Image src={poster2} alt="Poster 2" style="width:100%;aspect-ratio:3/4;object-fit:cover;" widths={[220, 440]} sizes="220px" /><div class="wool-booklet__poster-index">02</div></div>
+    <div><Image src={poster3} alt="Poster 3" style="width:100%;aspect-ratio:3/4;object-fit:cover;" widths={[220, 440]} sizes="220px" /><div class="wool-booklet__poster-index">03</div></div>
+    <div><Image src={poster4} alt="Poster 4" style="width:100%;aspect-ratio:3/4;object-fit:cover;" widths={[220, 440]} sizes="220px" /><div class="wool-booklet__poster-index">04</div></div>
+  </div>
+</div>
+
+<div class="single-col wide">
+  <span class="alt-block__eyebrow" style="color:#8a7568">The Irish woolscape</span>
+  <h3>Why this project exists</h3>
+  <p>Wool used to matter in Ireland. It was a medieval trade tied into rural economies, then shaped by regulation like the Wool Act 1699; industrialization later gave it a manufacturing base through mills. Then it fell apart: falling prices, synthetic fibers, and globalization pushed wool from valuable to something many farmers now pay to have taken away. Today there is a small but real push toward a circular economy, contemporary mills, and craft and heritage uses trying to find wool a place again. This project sits inside that last chapter, an attempt at a new application, and an investigation into the current workings of the wool industry.</p>
+</div>
+
+<div class="single-col wide">
+  <span class="alt-block__eyebrow" style="color:#8a7568">Talking to the people in it</span>
+  <h3>Field research and interviews</h3>
+  <p>Alongside the lab work, conversations across the wool supply chain grounded the project in more than literature. Ann Gunning, a sheep farmer, gave the farmer's-eye view of what happens to wool after shearing. Cushendale, a woollen mill, offered the local textile-processing perspective. Sheep's Wool Insulation spoke to the manufacturer's view of wool as a commercial building material, a direct precedent for using wool in construction. Tabea Dewille, a weaver, showed the slower, craft and heritage end of the woolscape. Solidwool and Thermafleece gave an international view of wool-based products that have already found a market elsewhere.</p>
+</div>
+
+<PullQuote accentColor="#8a7568">
+Not every stage of the supply chain exists in Ireland. 90% of wool is shipped internationally to be processed, then some is shipped back to Ireland to become "Irish-made" products.
+</PullQuote>
+
+<div class="credits">
+  <div class="credits__label">Credits</div>
+  <p>Roadhán McKenna, co-researcher<br />Jan Frohburg, supervisor<br />Manu Thundathil, supervisor<br />J.J. Leahy, supervisor<br />Adrian McEvoy, mechanical testing facilitation</p>
+</div>

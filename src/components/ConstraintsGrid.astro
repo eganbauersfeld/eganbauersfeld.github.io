@@ -1,0 +1,54 @@
+---
+interface Item {
+  label: string;
+  body: string;
+  accentColor?: string;
+}
+
+interface Props {
+  items: Item[];
+  columns?: number;
+}
+
+const { items, columns = items.length } = Astro.props;
+---
+
+<div class="constraints-grid" style={`--cg-columns:${columns}`}>
+  {items.map((item) => (
+    <div class="constraints-grid__item">
+      <div class="constraints-grid__label" style={item.accentColor ? `color:${item.accentColor}` : undefined}>{item.label}</div>
+      <div class="constraints-grid__body" set:html={item.body} />
+    </div>
+  ))}
+</div>
+
+<style>
+  .constraints-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cg-columns, 3), 1fr);
+    gap: 28px;
+    margin-top: 56px;
+  }
+
+  @media (max-width: 700px) {
+    .constraints-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .constraints-grid__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-brick);
+  }
+
+  .constraints-grid__body {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-body);
+    margin-top: 8px;
+  }
+</style>

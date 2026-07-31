@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectRow from '../../components/ProjectRow.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.index.localeCompare(b.data.index));
+---
+
+<BaseLayout title="Projects — Egan Bauersfeld">
+  <main class="projects-index">
+    <div class="projects-index__index">00</div>
+    <div class="projects-index__title">Projects</div>
+    {projects.map((project) => (
+      <ProjectRow
+        href={`/projects/${project.id}/`}
+        index={project.data.index}
+        name={project.data.indexTitle}
+        typeLabel={project.data.typeLabel}
+        accentColor={project.data.accentColor}
+      />
+    ))}
+  </main>
+</BaseLayout>
+
+<style>
+  .projects-index {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 64px 48px 100px;
+  }
+
+  .projects-index__index {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--color-muted);
+    margin-bottom: 8px;
+  }
+
+  .projects-index__title {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 44px;
+    color: var(--color-ink);
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 640px) {
+    .projects-index {
+      padding: 48px 24px 80px;
+    }
+  }
+</style>

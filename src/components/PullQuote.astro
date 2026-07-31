@@ -1,0 +1,25 @@
+---
+interface Props {
+  accentColor?: string;
+}
+
+const { accentColor = 'var(--accent-brick)' } = Astro.props;
+---
+
+<blockquote class="pull-quote" style={`--quote-accent:${accentColor}`}>
+  <slot />
+</blockquote>
+
+<style>
+  .pull-quote {
+    border-left: 3px solid var(--quote-accent, var(--accent-brick));
+    background: var(--color-surface);
+    padding: 24px 28px;
+    margin: 48px 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 23px;
+    color: var(--color-ink);
+    line-height: 1.5;
+  }
+</style>

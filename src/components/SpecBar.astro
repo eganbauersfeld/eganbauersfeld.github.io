@@ -1,0 +1,54 @@
+---
+interface Spec {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  specs: Spec[];
+  accentColor: string;
+}
+
+const { specs, accentColor } = Astro.props;
+---
+
+<div class="spec-bar" style={`--spec-accent:${accentColor}`}>
+  {specs.map((spec) => (
+    <div class="spec-bar__item">
+      <div class="spec-bar__label">{spec.label}</div>
+      <div class="spec-bar__value">{spec.value}</div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .spec-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 36px;
+  }
+
+  .spec-bar__item {
+    background: var(--color-surface);
+    border-left: 4px solid var(--spec-accent, var(--accent-brick));
+    padding: 14px 20px;
+    min-width: 170px;
+    flex: 1;
+  }
+
+  .spec-bar__label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+  }
+
+  .spec-bar__value {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-ink);
+    margin-top: 6px;
+  }
+</style>

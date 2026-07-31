@@ -1,0 +1,95 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SpecBar from '../../components/SpecBar.astro';
+import '../../styles/project-body.css';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+---
+
+<BaseLayout title={`${data.title} — Egan Bauersfeld`}>
+  <main class="project-detail">
+    <div class="project-detail__index" style={`color:${data.accentColor}`}>{data.index}</div>
+    <h1 class="project-detail__title">{data.title}</h1>
+    <div class="project-detail__byline">{data.byline}</div>
+
+    <SpecBar specs={data.specBar} accentColor={data.accentColor} />
+
+    {data.externalLink && (
+      <div class="project-detail__external">
+        <a href={data.externalLink.href} target="_blank" rel="noopener">{data.externalLink.label}</a>
+      </div>
+    )}
+
+    <div class="project-body">
+      <Content />
+    </div>
+
+    {data.footerLine && <div class="project-detail__footer">{data.footerLine}</div>}
+  </main>
+</BaseLayout>
+
+<style>
+  .project-detail {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 56px 48px 120px;
+  }
+
+  .project-detail__index {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .project-detail__title {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 46px;
+    color: var(--color-ink);
+    line-height: 1.08;
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .project-detail__byline {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--color-muted);
+    margin-top: 12px;
+  }
+
+  .project-detail__external {
+    margin-top: 56px;
+    font-family: var(--font-mono);
+    font-size: 15px;
+  }
+
+  .project-detail__footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid color-mix(in srgb, var(--color-ink) 13%, transparent);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--color-muted);
+  }
+
+  @media (max-width: 640px) {
+    .project-detail {
+      padding: 40px 24px 80px;
+    }
+    .project-detail__title {
+      font-size: 34px;
+    }
+  }
+</style>

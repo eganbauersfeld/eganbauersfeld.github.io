@@ -1,0 +1,149 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import headshot from '../../assets/images/about/headshot.jpg';
+
+const RESUME_HREF = '/docs/Egan-Bauersfeld-Resume.pdf';
+const LINKEDIN_HREF = 'https://www.linkedin.com/in/egan-bauersfeld';
+---
+
+<BaseLayout title="About — Egan Bauersfeld">
+  <main class="about">
+    <div class="about__intro">
+      <div class="about__photo">
+        <Image src={headshot} alt="photo: Egan Bauersfeld" width={220} height={220} />
+      </div>
+      <div class="about__intro-text">
+        <h1 class="about__heading">About</h1>
+        <p class="about__bio">I'm an Integrated Design Engineering student with a Mechanical Engineering emphasis and an Engineering Management Concentration. I work across mechanical prototyping, optical systems research, and hardware development. I care about building things that hold up under real use whether that's a load-bearing structure, an optical alignment, or a piece of adaptive equipment someone depends on every day.</p>
+      </div>
+    </div>
+
+    <a href="/media/" class="about__callout">
+      <div class="about__callout-label">Also</div>
+      <div class="about__callout-body">Sustainable-materials research on <a href="/projects/wool/">sheep's wool fiber</a>, and video production work — see <a href="/media/">Media</a>.</div>
+    </a>
+
+    <div class="about__education">
+      <div class="about__school">University of Colorado Boulder</div>
+      <div class="about__degree">Integrated Design Engineering, Mechanical Emphasis · Class of 2028</div>
+    </div>
+
+    <div class="about__links">
+      <a href={RESUME_HREF} target="_blank" rel="noopener">Resume</a> · <a href={LINKEDIN_HREF} target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .about {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 64px 48px 120px;
+  }
+
+  .about__intro {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .about__photo {
+    width: 220px;
+    height: 220px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .about__photo :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .about__intro-text {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .about__heading {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 40px;
+    color: var(--color-ink);
+    margin: 0 0 20px;
+    font-weight: 400;
+  }
+
+  .about__bio {
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--color-body);
+    margin: 0;
+  }
+
+  .about__callout {
+    display: block;
+    margin-top: 40px;
+    background: var(--color-surface);
+    border-left: 4px solid var(--accent-mauve-brown);
+    padding: 18px 22px;
+    color: inherit !important;
+  }
+
+  .about__callout-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+  }
+
+  .about__callout-body {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-ink);
+    margin-top: 6px;
+  }
+
+  .about__education {
+    margin-top: 48px;
+    padding: 20px 0;
+    border-top: 1px solid color-mix(in srgb, var(--color-ink) 13%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 13%, transparent);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .about__school {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--color-ink);
+  }
+
+  .about__degree {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--color-muted);
+  }
+
+  .about__links {
+    margin-top: 40px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--color-body);
+  }
+
+  @media (max-width: 640px) {
+    .about {
+      padding: 48px 24px 80px;
+    }
+  }
+</style>
