@@ -21,6 +21,7 @@ footerLine: 'Method: vacuum infusion + ASTM D7264 flexural testing · 24 bars te
 
 import AlternatingBlock from '../../components/AlternatingBlock.astro';
 import PullQuote from '../../components/PullQuote.astro';
+import Lightbox from '../../components/Lightbox.astro';
 import { Image } from 'astro:assets';
 import rawWool from '../../assets/images/wool/raw-wool.webp';
 import vacuumInfusion from '../../assets/images/wool/vacuum-infusion.webp';
@@ -48,7 +49,7 @@ import poster4 from '../../assets/images/wool/poster-4.webp';
 
 <div class="gallery-grid">
   <Image src={specimenCutting} alt="photo: specimen cutting" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 420px" />
-  <Image src={flexuralTestRig} alt="photo: flexural test rig, Lonsdale Basement" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 420px" />
+  <Image src={flexuralTestRig} alt="photo: flexural test rig, Lonsdale Basement" style="aspect-ratio:3/2;" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 420px" />
 </div>
 
 <div class="single-col">
@@ -62,8 +63,8 @@ Removing the washing process greatly reduces the energy required to process wool
 </PullQuote>
 
 <div class="gallery-grid">
-  <Image src={chartStrength} alt="chart: flexural strength, washed vs. unwashed, by wt%" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 420px" />
-  <Image src={chartModulus} alt="chart: flexural modulus, washed vs. unwashed, by wt%" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 420px" />
+  <Lightbox src={chartStrength} alt="chart: flexural strength, washed vs. unwashed, by wt%" aspectRatio="380/281" />
+  <Lightbox src={chartModulus} alt="chart: flexural modulus, washed vs. unwashed, by wt%" aspectRatio="95/71" />
 </div>
 
 <div class="single-col">
@@ -74,14 +75,14 @@ Removing the washing process greatly reduces the energy required to process wool
 
 <div id="wool-booklet" class="wool-booklet">
   <a href="https://drive.google.com/file/d/1MtddAQwfAI3dwzuSSjSVHqAC6u5Vz3RX/view?usp=sharing" target="_blank" rel="noopener" class="wool-booklet__cover">
-    <Image src={bookletCover} alt="Booklet cover" style="width:100%;aspect-ratio:3/4;object-fit:cover;" widths={[220, 440]} sizes="220px" />
+    <Image src={bookletCover} alt="Booklet cover" style="width:100%;aspect-ratio:124/165;object-fit:cover;" widths={[220, 440]} sizes="220px" />
     <div class="wool-booklet__caption">Research booklet (4-part)</div>
   </a>
   <div class="wool-booklet__posters">
-    <div><Image src={poster1} alt="Poster 1" style="width:100%;aspect-ratio:3/4;object-fit:cover;" widths={[220, 440]} sizes="220px" /><div class="wool-booklet__poster-index">01</div></div>
-    <div><Image src={poster2} alt="Poster 2" style="width:100%;aspect-ratio:3/4;object-fit:cover;" widths={[220, 440]} sizes="220px" /><div class="wool-booklet__poster-index">02</div></div>
-    <div><Image src={poster3} alt="Poster 3" style="width:100%;aspect-ratio:3/4;object-fit:cover;" widths={[220, 440]} sizes="220px" /><div class="wool-booklet__poster-index">03</div></div>
-    <div><Image src={poster4} alt="Poster 4" style="width:100%;aspect-ratio:3/4;object-fit:cover;" widths={[220, 440]} sizes="220px" /><div class="wool-booklet__poster-index">04</div></div>
+    <div><Lightbox src={poster1} alt="Poster 1" aspectRatio="335/474" /><div class="wool-booklet__poster-index">01</div></div>
+    <div><Lightbox src={poster2} alt="Poster 2" aspectRatio="335/474" /><div class="wool-booklet__poster-index">02</div></div>
+    <div><Lightbox src={poster3} alt="Poster 3" aspectRatio="335/474" /><div class="wool-booklet__poster-index">03</div></div>
+    <div><Lightbox src={poster4} alt="Poster 4" aspectRatio="335/474" /><div class="wool-booklet__poster-index">04</div></div>
   </div>
 </div>
 

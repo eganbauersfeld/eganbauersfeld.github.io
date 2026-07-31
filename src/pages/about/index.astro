@@ -19,10 +19,7 @@ const LINKEDIN_HREF = 'https://www.linkedin.com/in/egan-bauersfeld';
       </div>
     </div>
 
-    <a href="/media/" class="about__callout">
-      <div class="about__callout-label">Also</div>
-      <div class="about__callout-body">Sustainable-materials research on <a href="/projects/wool/">sheep's wool fiber</a>, and video production work — see <a href="/media/">Media</a>.</div>
-    </a>
+    <p class="about__secondary">Also: sustainable-materials research on <a href="/projects/wool/">sheep's wool fiber</a>, and video production work — see <a href="/media/">Media</a>.</p>
 
     <div class="about__education">
       <div class="about__school">University of Colorado Boulder</div>
@@ -85,28 +82,12 @@ const LINKEDIN_HREF = 'https://www.linkedin.com/in/egan-bauersfeld';
     margin: 0;
   }
 
-  .about__callout {
-    display: block;
-    margin-top: 40px;
-    background: var(--color-surface);
-    border-left: 4px solid var(--accent-mauve-brown);
-    padding: 18px 22px;
-    color: inherit !important;
-  }
-
-  .about__callout-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--color-muted);
-  }
-
-  .about__callout-body {
+  .about__secondary {
+    margin-top: 32px;
     font-family: var(--font-body);
     font-size: 15px;
-    color: var(--color-ink);
-    margin-top: 6px;
+    line-height: 1.6;
+    color: var(--color-muted);
   }
 
   .about__education {

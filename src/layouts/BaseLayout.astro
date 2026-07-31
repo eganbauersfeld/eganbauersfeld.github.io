@@ -29,5 +29,69 @@ const { title, description = 'Egan Bauersfeld — Integrated Design Engineer, CU
   <body>
     <Nav />
     <slot />
+
+    <div id="lightbox-overlay" class="lightbox-overlay" hidden>
+      <button type="button" class="lightbox-overlay__close" aria-label="Close">Close ✕</button>
+      <img id="lightbox-overlay__image" class="lightbox-overlay__image" alt="" />
+    </div>
   </body>
 </html>
+
+<style>
+  .lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: color-mix(in srgb, var(--color-ink) 90%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .lightbox-overlay[hidden] {
+    display: none;
+  }
+
+  .lightbox-overlay__image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .lightbox-overlay__close {
+    position: absolute;
+    top: 14px;
+    right: 24px;
+    background: none;
+    border: 0;
+    color: var(--color-surface);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  const overlay = document.getElementById('lightbox-overlay') as HTMLElement;
+  const overlayImage = document.getElementById('lightbox-overlay__image') as HTMLImageElement;
+
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+    const trigger = target.closest('.lightbox-trigger') as HTMLElement | null;
+    if (trigger) {
+      overlayImage.src = trigger.dataset.lightboxSrc ?? '';
+      overlayImage.alt = trigger.dataset.lightboxAlt ?? '';
+      overlay.hidden = false;
+      return;
+    }
+    if (target.closest('.lightbox-overlay__close') || target === overlay) {
+      overlay.hidden = true;
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') overlay.hidden = true;
+  });
+</script>
