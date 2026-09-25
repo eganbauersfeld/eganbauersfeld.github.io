@@ -51,14 +51,14 @@ const smalls = projects.filter((p) => p.data.heroTile.size === 'small');
       </div>
     </div>
 
-    <div class="home__small-grid">
+    <div class="home__small-grid" style={`--small-cols:${smalls.length + 1}`}>
       {smalls.map((project, i) => (
         <ProjectTile
           href={`/projects/${project.id}/`}
           index={project.data.index}
           title={project.data.homeTileTitle ?? project.data.indexTitle}
           typeLabel={project.data.homeSubtitle}
-          accentColor={['#a15c3e', '#4b4a3d', '#93807a'][i % 3]}
+          accentColor={['#a15c3e', '#4b4a3d', '#93807a', '#8a7130'][i % 4]}
           size="small"
         />
       ))}
@@ -134,7 +134,7 @@ const smalls = projects.filter((p) => p.data.heroTile.size === 'small');
 
   .home__small-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(var(--small-cols, 4), 1fr);
     gap: 22px;
     margin-top: 22px;
   }

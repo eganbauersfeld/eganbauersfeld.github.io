@@ -1,0 +1,132 @@
+---
+type: build
+title: Outfit
+indexTitle: 'Outfit: a wardrobe app'
+homeTileTitle: Outfit
+index: '07'
+accentColor: '#a8811f'
+typeLabel: Build / Product design + software
+homeSubtitle: 'Build · Personal wardrobe app, iPhone PWA'
+byline: 'Solo project · Designed and directed by me, built with Claude Code · September 2026'
+heroTile:
+  size: small
+specBar:
+  - label: Platform
+    value: iPhone home-screen web app (PWA), works offline
+  - label: Stack
+    value: React, TypeScript, Vite, IndexedDB, on-device ML (ONNX / WebAssembly)
+  - label: Role
+    value: Product owner, UX + visual design, spec writing, testing
+externalLink:
+  label: Open the app ↗
+  href: 'https://eganbauersfeld.github.io/outfit-app/'
+footerLine: 'Status: in daily use · 5 screens · 29 automated scenario tests · no accounts, no server, all data on the phone'
+---
+
+import AlternatingBlock from '../../components/AlternatingBlock.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import ImagePlaceholder from '../../components/ImagePlaceholder.astro';
+
+<AlternatingBlock alt="Today screen — big temperature, hourly strip, weather-shaped starter, fit grid, streak + uniqueness score, daily quote" side="left">
+<h3>The problem</h3>
+<p>I wanted a fast way to see what I actually wear, stop defaulting to the same few outfits, and get a nudge on what to wear given the weather, without an app that tells me what to do. Existing closet apps are slow to set up, want accounts, and push generic "outfit of the day" suggestions that ignore what you own.</p>
+</AlternatingBlock>
+
+<PullQuote accentColor="#a8811f">
+Nudge, don't dictate.
+</PullQuote>
+
+<div class="single-col wide">
+<p>This is the key design rule. The app starts each day with a weather-shaped starter in plain garment words, like <strong>"long-sleeve top + shorts"</strong> on a cool-morning, warm-afternoon day, not specific pieces. Real outfit ideas, photo collages built from my own closet, only appear when I ask for them. I stay the stylist; the app is the assistant.</p>
+</div>
+
+<AlternatingBlock alt="Closet grid — studio-background photos" side="right">
+<h3>Spec-first, fast feedback</h3>
+<p>I worked spec-first, in fast feedback rounds, over about three days (September 23–25, 2026; 19 shipped versions). I wrote a build spec doc covering screens, data, and open questions, then kept adding feedback rounds to the same doc as I used the app. Today (log what you're wearing), Closet, Trends and Gallery were deployed to GitHub Pages and on my phone's home screen the same day. On the phone, the weather location failed, so we added clear errors and a pick-a-city fallback, and made Today fit on one screen with no scrolling.</p>
+</AlternatingBlock>
+
+<div class="single-col">
+<span class="alt-block__eyebrow" style="color:#a8811f">The redesign</span>
+<h3>v1 worked, but I didn't want to open it</h3>
+<p>I gave reference images and a direction, "Swiss style meets editorial," and asked for the Gallery to look like a record label's discography page. The result: Bodoni Moda display type with Inter Tight, hairline grids, two-digit Swiss indexes (01, 02…), black and warm paper with a single yellow accent, and a Gallery of square "record sleeves," one per day.</p>
+</div>
+
+<div class="gallery-grid">
+  <ImagePlaceholder label="Early version" />
+  <ImagePlaceholder label="Redesigned: Swiss style meets editorial" />
+</div>
+<div class="single-col wide">
+  <ImagePlaceholder label="Gallery — record-discography grid" aspectRatio="16/10" />
+</div>
+
+<AlternatingBlock alt="Ideas tab — three photo-collage outfit ideas" side="left">
+<h3>Ideas became the key feature</h3>
+<p>It got its own tab, weather-aware, with actual pictures of combos instead of lists of words. Underneath it is a smart on-device rules engine, free and offline, that I pushed to be "really smart."</p>
+</AlternatingBlock>
+
+<div class="tech-details">
+  <h3>Under the hood</h3>
+  <ul>
+    <li><strong>Weather → wear window:</strong> turns the hourly forecast (feels-like temperature, rain chance, wind, UV) into an 8 AM–8 PM profile</li>
+    <li><strong>Garment traits:</strong> infers each piece's warmth, formality and practical traits (waterproof, boots, rain-delicate shoes) from category, sleeves or length, material and name</li>
+    <li><strong>Thermal check:</strong> tests each outfit hour by hour against a warmth curve — legs count half, and a layer is added when it helps and always when it rains</li>
+    <li><strong>Color harmony:</strong> scores color in Lab space, understanding neutrals, one "pop" of color, related vs. clashing hues, contrast, denim-on-denim, and two graphics fighting</li>
+    <li><strong>Taste learning:</strong> learns from my logs and my ♥ / "not for me" taps — rotation, pairings I actually wear, whether I run warm or cold, and the temperatures each piece gets worn in</li>
+    <li><strong>Picking:</strong> scores every outfit the closet can make, then returns three that are good and different, each with a one-line reason; I can swap any single piece and the engine re-ranks replacements as whole outfits</li>
+    <li><strong>Tested:</strong> 29 automated scenario tests, e.g. "cool morning, hot afternoon" and "rainy day avoids suede"</li>
+  </ul>
+</div>
+
+<div class="single-col wide">
+  <ImagePlaceholder label="Trends chart — rotation and pairing history" aspectRatio="16/10" />
+</div>
+
+<PullQuote accentColor="#a8811f">
+AI vs. rules: the right answer depended on cost and ownership, not capability. A well-tuned rules engine was good enough, and free forever.
+</PullQuote>
+
+<div class="single-col wide">
+<p>First I built an option where Claude picks outfits via the API with my own key. When I realized that meant paying per use, I chose a third option: the on-device rules engine above. The AI version is kept in the git history if I ever want it back.</p>
+</div>
+
+<div class="single-col">
+<h3>Studio photos, and a crash</h3>
+<p>My clothing photos all had different messy backgrounds, which made the closet and gallery look chaotic. I asked whether it could be automatic. The app now cuts each garment out and puts it on one uniform studio backdrop, on the phone, in the background.</p>
+</div>
+
+<div class="gallery-grid">
+  <ImagePlaceholder label="Before: ordinary clothing photo" />
+  <ImagePlaceholder label="After: automatic studio version" />
+</div>
+
+<div class="single-col wide">
+<p>The first model (about 56 MB) crashed my iPhone. I paused the feature, and we swapped in a much smaller model (4.6 MB) running in a background worker. We also added a crash guard: if the app dies mid-photo, that photo is skipped, and after two crashes, processing pauses itself until I turn it back on. Result: about 3–5 seconds per photo, zero taps, originals kept. Shipping to a real phone early exposed a memory limit no desktop test would have caught — the fix was a smaller model plus a guard that makes the failure harmless.</p>
+</div>
+
+<AlternatingBlock alt="Today screen with two fits — Day / Night out tabs" side="right">
+<h3>Built from real use</h3>
+<p>From real life: I change to go out, to the gym, and so on. Today now has fit tabs (Day / Night out / Work…). Each fit is logged and scored separately, and the Gallery shows a "2 fits" badge. Some of my graphic tees are printed on both sides too, so pieces can now have an optional back photo, flippable right on the closet tile, and it gets the same studio treatment. Small product calls came the same way: a uniqueness score replaced "% thrifted" on the home screen, a new fashion quote (pool of 100) appears each time the app opens, and long vs. short sleeve, shorts vs. pants, and material were added to each piece because the engine needs them.</p>
+</AlternatingBlock>
+
+<div class="single-col wide">
+<span class="alt-block__eyebrow" style="color:#a8811f">Privacy</span>
+<h3>No accounts, no backend</h3>
+<p>Everything — clothes, photos, logs — lives in the phone's own storage, and backup is a manual export file. Anyone can install it from the link and gets their own empty closet; nobody can see anyone else's data. This was a deliberate constraint: zero running cost, works offline, and personal data never leaves the phone.</p>
+</div>
+
+<PullQuote accentColor="#a8811f">
+A feature isn't done when it works; it's done when I want to open the app.
+</PullQuote>
+
+<div class="single-col wide">
+<p>The redesign came from using v1, not from a checklist. Real use drove the roadmap: multiple fits and double-sided tees only showed up because I was wearing the app every day. Next up, if I keep going: daily fit photos in the Gallery, auto-tagging color and "graphic" from photos, and optional Claude-powered ideas as an opt-in upgrade.</p>
+</div>
+
+<div class="single-col" style="max-width:160px">
+  <ImagePlaceholder label="App icon — single-line hanger on black" aspectRatio="1/1" />
+</div>
+
+<a class="paper-link" href="https://github.com/eganbauersfeld/outfit-app" target="_blank" rel="noopener" style="border-color:#a8811f">
+  <div class="paper-link__label">Source</div>
+  <div class="paper-link__body">View the code on GitHub — the app lives in its own repo, separate from this site.</div>
+</a>
