@@ -58,11 +58,22 @@ const LINKEDIN_HREF = 'https://www.linkedin.com/in/egan-bauersfeld';
   }
 
   @media (max-width: 640px) {
+    /* Name on its own line, links below, so the row never runs off screen */
     .nav {
-      padding: 16px 20px;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px 20px 12px;
+    }
+    .nav__name {
+      white-space: nowrap;
     }
     .nav__links {
-      gap: 16px;
+      flex-basis: 100%;
+      flex-wrap: wrap;
+      gap: 6px 16px;
+    }
+    .nav__link {
+      font-size: 11px;
     }
   }
 </style>
