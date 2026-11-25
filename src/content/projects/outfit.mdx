@@ -24,7 +24,6 @@ footerLine: 'Status: in daily use · 5 screens · 29 automated scenario tests ·
 ---
 
 import { Image } from 'astro:assets';
-import PullQuote from '../../components/PullQuote.astro';
 import today from '../../assets/images/outfit/today.jpg';
 import ideas from '../../assets/images/outfit/ideas.jpg';
 import closet from '../../assets/images/outfit/closet.jpg';
@@ -34,20 +33,16 @@ import gallery from '../../assets/images/outfit/gallery.jpg';
 <div class="outfit-split">
 <figure><Image src={today} alt="Today screen: weather, a starter suggestion, and today's logged fit" widths={[300, 600]} sizes="240px" /></figure>
 <div>
-<h3>The problem</h3>
-<p>I wanted to see what I actually wear, stop defaulting to the same few outfits, and get a weather-aware nudge in the morning. Existing closet apps are slow to set up, want accounts, and suggest generic outfits that ignore what you own. So I wrote a spec and directed Claude Code to build my own, over three days and 19 shipped versions.</p>
+<h3>Overview</h3>
+<p>I built a wardrobe app for my iPhone to keep track of what I wear and get outfit suggestions based on the weather. I wanted to stop rotating through the same few outfits, and the closet apps I tried were slow to set up, required accounts, and suggested outfits that didn't account for what I actually own. I wrote the spec, made the design and product decisions, and built it with Claude Code over three days and 19 versions.</p>
 </div>
 </div>
-
-<PullQuote accentColor="#a8811f">
-Nudge, don't dictate.
-</PullQuote>
 
 <div class="outfit-split outfit-split--reverse">
 <figure><Image src={ideas} alt="Ideas screen: an outfit built from the closet with a one-line reason" widths={[300, 600]} sizes="240px" /></figure>
 <div>
-<h3>A rules engine, not an AI</h3>
-<p>Today only gives a starter in plain words ("sweater + pants + jacket"). Real outfit ideas built from my closet show up when I ask. They come from an on-device rules engine that checks each outfit hour by hour against the forecast, scores color harmony, and learns from what I log and like. I first built a version that called Claude's API, but it cost money per use. The rules engine was good enough and free forever.</p>
+<h3>How it works</h3>
+<p>The home screen gives a general suggestion based on the forecast, like "sweater + pants + jacket." Specific outfits from my closet are on the Ideas tab. They come from an on-device rules engine that checks each outfit against the hourly forecast, scores color combinations, and adjusts based on what I log and like. I first tried a version that used Claude's API to pick outfits, but it cost money every time it ran, so I switched to the rules engine, which is free and works offline.</p>
 </div>
 </div>
 
@@ -58,16 +53,13 @@ Nudge, don't dictate.
 </div>
 
 <div class="single-col wide">
-<h3>Built from real use</h3>
-<p>Using it every day drove the roadmap. v1 worked, but I didn't want to open it, so I redesigned it as "Swiss style meets editorial." Messy photo backgrounds made the closet look chaotic, so the app now cuts each garment out onto one studio backdrop on the phone. The first model crashed my iPhone; a 4.6 MB model plus a crash guard fixed it. I change to go out at night, so a day can have multiple fits.</p>
+<h3>Iteration</h3>
+<p>I used the app every day while building it, and most of the changes came from that. The first version worked but I didn't enjoy using it, so I redesigned the interface. My clothing photos all had different backgrounds, so I added on-device background removal that puts every item on the same backdrop. The first model I used was too large and crashed my phone; switching to a 4.6 MB model and adding a crash guard fixed it. I also added support for logging more than one outfit per day.</p>
 </div>
 
-<PullQuote accentColor="#a8811f">
-A feature isn't done when it works; it's done when I want to open the app.
-</PullQuote>
-
 <div class="single-col wide">
-<p>No accounts, no server: everything lives on the phone, so it costs nothing to run and works offline. Screenshots show a sample closet.</p>
+<h3>Outcome</h3>
+<p>Everything is stored on the phone, with no accounts or server, so it costs nothing to run and works offline. I still use it every day. The screenshots show a sample closet.</p>
 </div>
 
 <a class="paper-link" href="https://github.com/eganbauersfeld/outfit-app" target="_blank" rel="noopener" style="border-color:#a8811f">
