@@ -199,3 +199,23 @@
   line-height: 1.8;
   color: var(--color-body);
 }
+
+/* Outfit page: phone screenshots */
+.project-body .outfit-split { display: flex; gap: 40px; align-items: center; margin-top: 56px; flex-wrap: wrap; }
+.project-body .outfit-split--reverse { flex-direction: row-reverse; }
+.project-body .outfit-split figure { margin: 0; flex: 0 0 240px; }
+.project-body .outfit-split > div { flex: 1; min-width: 260px; }
+.project-body .outfit-split h3 { font-family: var(--font-display); font-style: italic; font-size: 24px; color: var(--color-ink); margin: 0 0 14px; font-weight: 400; }
+.project-body .outfit-split p { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: var(--color-body); margin: 0; }
+.project-body .outfit-split img,
+.project-body .outfit-phones img { width: 100%; height: auto; display: block; border-radius: 14px; }
+.project-body .outfit-phones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; }
+.project-body .outfit-phones figure { margin: 0; }
+.project-body .outfit-phones figcaption { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-muted); margin-top: 8px; text-align: center; }
+@media (max-width: 700px) {
+  .project-body .outfit-split figure { flex-basis: 100%; max-width: 240px; margin: 0 auto; }
+  /* 3-up is too small on phones: swipeable strip, next screen peeks in */
+  .project-body .outfit-phones { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 62%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 4px; }
+  .project-body .outfit-phones::-webkit-scrollbar { display: none; }
+  .project-body .outfit-phones figure { scroll-snap-align: start; }
+}
