@@ -1,0 +1,396 @@
+---
+/**
+ * Interactive deliverable timeline: one row per deliverable on a shared date axis.
+ * Each bar runs from when we submitted to when it was due, so a longer bar means further ahead.
+ * Hover or tap a row to see its details.
+ */
+interface Item {
+  name: string;
+  due: string; // YYYY-MM-DD
+  submitted?: string; // YYYY-MM-DDTHH:MM (local)
+  score?: string;
+  note: string;
+}
+interface Event {
+  date: string;
+  label: string;
+}
+interface Props {
+  items: Item[];
+  events?: Event[];
+  start: string;
+  end: string;
+  resetDate?: string;
+  resetLabel?: string;
+  accentColor: string;
+}
+
+const { items, events = [], start, end, resetDate, resetLabel, accentColor } = Astro.props;
+
+const t0 = new Date(start + 'T00:00').getTime();
+const t1 = new Date(end + 'T23:59').getTime();
+const pct = (iso: string) => (((new Date(iso).getTime() - t0) / (t1 - t0)) * 100).toFixed(2);
+const fmt = (iso: string, time = false) =>
+  new Date(iso).toLocaleString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    ...(time ? { hour: 'numeric', minute: '2-digit' } : {}),
+  });
+
+const rows = items.map((it) => {
+  const dueIso = it.due + 'T23:59';
+  const subIso = it.submitted;
+  const early = subIso ? (new Date(dueIso).getTime() - new Date(subIso).getTime()) / 36e5 : null;
+  const earlyLabel =
+    early === null ? 'Coming up' : early < 1 ? `${Math.round(early * 60)} min early` : early < 24 ? `${Math.round(early)} hr early` : `${(early / 24).toFixed(1)} days early`;
+  return {
+    ...it,
+    dueIso,
+    subIso,
+    earlyLabel,
+    left: subIso ? pct(subIso) : pct(dueIso),
+    right: pct(dueIso),
+    dueText: fmt(dueIso),
+    subText: subIso ? fmt(subIso, true) : 'Not yet',
+  };
+});
+
+const months: { label: string; left: string }[] = [];
+{
+  const d = new Date(start + 'T00:00');
+  d.setDate(1);
+  while (d.getTime() <= t1) {
+    if (d.getTime() >= t0) months.push({ label: d.toLocaleString('en-US', { month: 'short' }), left: pct(d.toISOString().slice(0, 10) + 'T00:00') });
+    d.setMonth(d.getMonth() + 1);
+  }
+}
+---
+
+<div class="dtl" style={`--dtl-accent:${accentColor}`} data-dtl>
+  <div class="dtl__legend">
+    <span><i class="dtl__key dtl__key--bar"></i>Submitted → due (longer = further ahead)</span>
+    <span><i class="dtl__key dtl__key--due"></i>Deadline</span>
+  </div>
+
+  <div class="dtl__chart">
+    <div class="dtl__row dtl__row--axis">
+      <div class="dtl__label"></div>
+      <div class="dtl__track">
+        {months.map((m) => <span class="dtl__month" style={`left:${m.left}%`}>{m.label}</span>)}
+        {events.map((e) => (
+          <span class="dtl__event" style={`left:${pct(e.date + 'T12:00')}%`} title={e.label}>
+            <span class="dtl__event-label">{e.label}</span>
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <div class="dtl__rows">
+      {resetDate && (
+        <div class="dtl__overlay" aria-hidden="true">
+          <span></span>
+          <span class="dtl__track dtl__overlay-track">
+            <span class="dtl__reset" style={`left:${pct(resetDate + 'T23:59')}%`}><span>{resetLabel}</span></span>
+          </span>
+        </div>
+      )}
+      {rows.map((r, i) => (
+        <button
+          type="button"
+          class:list={['dtl__row', !r.subIso && 'dtl__row--future']}
+          data-i={i}
+          data-name={r.name}
+          data-due={r.dueText}
+          data-sub={r.subText}
+          data-early={r.earlyLabel}
+          data-score={r.score ?? ''}
+          data-note={r.note}
+        >
+          <span class="dtl__label">{r.name}</span>
+          <span class="dtl__track">
+            {months.map((m) => <span class="dtl__grid" style={`left:${m.left}%`}></span>)}
+            {r.subIso && <span class="dtl__bar" style={`left:${r.left}%;width:calc(${r.right}% - ${r.left}%)`}></span>}
+            {r.subIso && <span class="dtl__dot" style={`left:${r.left}%`}></span>}
+            <span class="dtl__due" style={`left:${r.right}%`}></span>
+            <span class="dtl__early" style={`left:${r.right}%`}>{r.earlyLabel}</span>
+          </span>
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <div class="dtl__detail" aria-live="polite">
+    <div class="dtl__detail-name">Hover or tap a deliverable</div>
+    <div class="dtl__detail-grid">
+      <div><span>Submitted</span><b data-f="sub">–</b></div>
+      <div><span>Due</span><b data-f="due">–</b></div>
+      <div><span>Lead</span><b data-f="early">–</b></div>
+      <div><span>Score</span><b data-f="score">–</b></div>
+    </div>
+    <p class="dtl__detail-note" data-f="note">Submit times come from Gradescope. Every team deliverable went in on time.</p>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-dtl]').forEach((root) => {
+    const detail = root.querySelector<HTMLElement>('.dtl__detail')!;
+    const name = detail.querySelector<HTMLElement>('.dtl__detail-name')!;
+    const set = (f: string, v: string) => (detail.querySelector<HTMLElement>(`[data-f="${f}"]`)!.textContent = v || '–');
+    const rows = root.querySelectorAll<HTMLButtonElement>('button.dtl__row');
+    const show = (b: HTMLButtonElement) => {
+      rows.forEach((r) => r.classList.toggle('is-active', r === b));
+      name.textContent = b.dataset.name!;
+      set('sub', b.dataset.sub!);
+      set('due', b.dataset.due!);
+      set('early', b.dataset.early!);
+      set('score', b.dataset.score!);
+      set('note', b.dataset.note!);
+    };
+    rows.forEach((b) => {
+      b.addEventListener('mouseenter', () => show(b));
+      b.addEventListener('focus', () => show(b));
+      b.addEventListener('click', () => show(b));
+    });
+  });
+</script>
+
+<style>
+  .dtl {
+    margin-top: 32px;
+    font-family: var(--font-body);
+  }
+  .dtl__legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-muted);
+    margin-bottom: 14px;
+  }
+  .dtl__key {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+  .dtl__key--bar {
+    width: 22px;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--dtl-accent);
+  }
+  .dtl__key--due {
+    width: 2px;
+    height: 12px;
+    background: var(--color-ink);
+  }
+  .dtl__chart {
+    position: relative;
+  }
+  .dtl__rows {
+    position: relative;
+  }
+  .dtl__row {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    align-items: center;
+    width: 100%;
+    min-height: 30px;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    color: inherit;
+    border-radius: 6px;
+  }
+  .dtl__row--axis {
+    cursor: default;
+    min-height: 44px;
+    align-items: end;
+  }
+  button.dtl__row:hover,
+  button.dtl__row.is-active {
+    background: color-mix(in srgb, var(--dtl-accent) 10%, transparent);
+  }
+  .dtl__label {
+    font-size: 13px;
+    color: var(--color-body);
+    padding: 0 10px 0 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .dtl__track {
+    position: relative;
+    display: block;
+    height: 30px;
+    margin-right: 96px;
+  }
+  .dtl__row--axis .dtl__track {
+    height: 44px;
+  }
+  .dtl__month {
+    position: absolute;
+    bottom: 2px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    transform: translateX(2px);
+  }
+  .dtl__event {
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-ink);
+    transform: translateX(-5px);
+  }
+  .dtl__event-label {
+    position: absolute;
+    left: 14px;
+    top: -3px;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-ink);
+  }
+  .dtl__grid {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: color-mix(in srgb, var(--color-ink) 10%, transparent);
+  }
+  .dtl__bar {
+    position: absolute;
+    top: 50%;
+    height: 8px;
+    min-width: 3px;
+    border-radius: 4px;
+    background: var(--dtl-accent);
+    transform: translateY(-50%);
+  }
+  .dtl__dot {
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--dtl-accent);
+    border: 2px solid var(--color-bg);
+    transform: translate(-5px, -50%);
+  }
+  .dtl__due {
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--color-ink);
+  }
+  .dtl__early {
+    position: absolute;
+    top: 50%;
+    transform: translate(8px, -50%);
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-muted);
+  }
+  .dtl__row--future .dtl__due {
+    background: color-mix(in srgb, var(--color-ink) 35%, transparent);
+  }
+  .dtl__overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .dtl__overlay-track {
+    height: auto !important;
+  }
+  .dtl__reset {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-left: 1.5px dashed var(--dtl-accent);
+  }
+  .dtl__reset span {
+    position: absolute;
+    bottom: -22px;
+    left: -1px;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--dtl-accent);
+  }
+  .dtl__detail {
+    margin-top: 36px;
+    padding: 18px 20px;
+    background: var(--color-surface);
+    border-left: 3px solid var(--dtl-accent);
+  }
+  .dtl__detail-name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--color-ink);
+  }
+  .dtl__detail-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .dtl__detail-grid span {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-muted);
+  }
+  .dtl__detail-grid b {
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--color-ink);
+  }
+  .dtl__detail-note {
+    margin: 12px 0 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-body);
+  }
+  @media (max-width: 700px) {
+    .dtl__overlay {
+      grid-template-columns: 96px 1fr;
+    }
+    .dtl__row {
+      grid-template-columns: 96px 1fr;
+    }
+    .dtl__label {
+      font-size: 11px;
+    }
+    .dtl__track {
+      margin-right: 0;
+    }
+    .dtl__early,
+    .dtl__event-label {
+      display: none;
+    }
+    .dtl__detail-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

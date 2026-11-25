@@ -1,0 +1,118 @@
+---
+type: build
+title: Gear Loop
+indexTitle: 'Gear Loop: from idea to pitch'
+homeTileTitle: Gear Loop
+index: '09'
+accentColor: '#4f6b5a'
+typeLabel: Venture / Business development
+homeSubtitle: 'Venture · Startup course, CFO'
+byline: 'CFO · 5-person founding team · GEEN 3400 Invention and Innovation · Fall 2026'
+heroTile:
+  size: small
+specBar:
+  - label: My role
+    value: CFO. Unit economics, financial plan, market sizing
+  - label: Process
+    value: Customer discovery, validation, patent search, pitch
+  - label: Unit economics
+    value: $11.99 price, $5.00 cost, 58% margin
+  - label: Design Expo
+    value: 48.2 / 50 from judges
+footerLine: 'Status: final pitch delivered November 20 · business plan due December 5'
+---
+
+import { Image } from 'astro:assets';
+import AlternatingBlock from '../../components/AlternatingBlock.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import product from '../../assets/images/gearloop/product-on-backpack.jpg';
+import overpacked1 from '../../assets/images/gearloop/problem-overpacked-1.jpg';
+import overpacked2 from '../../assets/images/gearloop/problem-overpacked-2.jpg';
+import customer from '../../assets/images/gearloop/customer-wearing.jpg';
+
+<AlternatingBlock image={product} alt="Gear Loop mesh net holding a pair of shoes on the outside of a backpack" side="left" aspectRatio="3/4">
+<h3>The venture</h3>
+<p>Gear Loop is a mesh net that clips onto the outside of any backpack to carry the things that don't belong inside it: shoes, a jacket, a towel, a helmet. The product is simple on purpose. The class was about the business: our team of five ran it like a startup for a semester, with an operating agreement, customer discovery, patent research, a financial plan and two pitches. I was the CFO.</p>
+</AlternatingBlock>
+
+<div class="single-col wide">
+<h3>Starting from the wrong end</h3>
+<p>Our first idea was a clip to hang a wet jacket off a backpack, and we spent our early energy proving the clip worked instead of asking whether the problem was real. Reading <em>Bad Blood</em> for the class made that hard to ignore. Our professor kept pushing us back to the problem, so we went and talked to people.</p>
+</div>
+
+<PullQuote accentColor="#4f6b5a">
+We had a solution first. The real work was going back to find out if the problem existed.
+</PullQuote>
+
+<div class="gl-pair">
+  <figure class="gl-figure"><Image src={overpacked1} alt="An overstuffed backpack with a jacket crammed in" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 330px" /></figure>
+  <figure class="gl-figure"><Image src={overpacked2} alt="Dirty shoes packed on top of a laptop and notebooks" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 330px" /></figure>
+</div>
+
+<div class="single-col wide">
+<span class="alt-block__eyebrow" style="color:#4f6b5a">Customer discovery</span>
+<h3>What students told us</h3>
+<p>We wrote an interview guide that never mentioned our product and logged 22 interviews. Of the 12 students we asked about carrying their own stuff, 10 said their bag can't always fit what they need. A follow-up survey backed it up and told us what mattered: if it swings or slips, people won't use it. That turned "a jacket clip" into a universal net that sits flat against the bag with a strap across the bottom.</p>
+</div>
+
+<div class="gl-stats">
+  <div><b>22</b><span>customer interviews</span></div>
+  <div><b>10 of 12</b><span>students said their bag can't fit everything</span></div>
+  <div><b>65%</b><span>of survey respondents had backpack storage problems</span></div>
+  <div><b>45%</b><span>said swinging or slipping was a dealbreaker</span></div>
+</div>
+
+<div class="single-col wide">
+<h3>Is there room in the market?</h3>
+<p>We reviewed 15 patents and published applications plus 3 products already for sale. The closest, a ball carrier that straps to a backpack, is still in force, so our attachment had to avoid its exact combination of features. The closest products were helmet nets that only fit certain bags. Our angle: Gear Loop fits the backpack you already own.</p>
+</div>
+
+<div class="gl-table-wrap">
+  <table class="gl-table">
+    <thead><tr><th></th><th>Gear Loop</th><th>Premium backpacks</th><th>Helmet nets</th></tr></thead>
+    <tbody>
+      <tr><td>Fits any backpack</td><td>Yes</td><td>No</td><td>No</td></tr>
+      <tr><td>Doesn't crush what's inside</td><td>Yes</td><td>No</td><td>No</td></tr>
+      <tr><td>Low profile, lightweight</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>Price</td><td><b>$11.99</b></td><td>$115</td><td>$10</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="single-col wide">
+<span class="alt-block__eyebrow" style="color:#4f6b5a">My role as CFO</span>
+<h3>Making the numbers work</h3>
+<p>I built the unit economics and the financial plan. At $11.99 and about $5 to make, each Gear Loop earns $6.99, a 58% margin. Covering yearly overhead takes 3,737 units, or about $44.8K in sales, and our revenue plan passes break-even in year three. For market size, I worked from the global backpack market down to the customers we could actually reach first: CU Boulder students who walk or bike to class.</p>
+</div>
+
+<div class="gl-money">
+  <div class="gl-econ">
+    <div><b>$11.99</b><span>price</span></div>
+    <div><b>$5.00</b><span>unit cost</span></div>
+    <div><b>58%</b><span>margin</span></div>
+    <div><b>3,737</b><span>units to break even</span></div>
+    <div><b>Year 3</b><span>revenue passes break-even</span></div>
+  </div>
+  <div class="gl-market" aria-label="Market sizing">
+    <div class="gl-market__ring gl-market__tam">
+      <span><b>$20.3B</b> TAM · global backpacks</span>
+      <div class="gl-market__ring gl-market__sam">
+        <span><b>$468M</b> SAM · US college students</span>
+        <div class="gl-market__ring gl-market__som">
+          <span><b>$505K</b> SOM · CU walk + bike commuters</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<AlternatingBlock image={customer} alt="A student wearing a backpack with Gear Loop attached" side="right" aspectRatio="3/4">
+<h3>Pitching it</h3>
+<p>We pitched twice and showed a working prototype at the CU Design Expo, where judges scored us 48.2 out of 50. The pitch opened with the problem everyone recognizes: laptop and lunch crammed in the bag, gym shoes dangling off a strap, jacket tied around your waist. By the final pitch we had a real customer saying "I use it every day!" and an industry professional calling it a great idea and nicely made.</p>
+</AlternatingBlock>
+
+<div class="single-col wide">
+<span class="alt-block__eyebrow" style="color:#4f6b5a">Takeaway</span>
+<h3>What I'm taking with me</h3>
+<p>Engineers tend to start with the thing they want to build. This class taught me to start with the person who has the problem, and to back every claim with interviews, data or a number someone can check. As CFO I learned that a product only works as a business if the margin, the market and the price all hold up together.</p>
+</div>

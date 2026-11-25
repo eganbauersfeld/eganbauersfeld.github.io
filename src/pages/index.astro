@@ -51,7 +51,7 @@ const smalls = projects.filter((p) => p.data.heroTile.size === 'small');
       </div>
     </div>
 
-    <div class="home__small-grid" style={`--small-cols:${smalls.length + 1}`}>
+    <div class="home__small-grid" style={`--small-cols:${Math.min(smalls.length + 1, 4)}`}>
       {smalls.map((project, i) => (
         <ProjectTile
           href={`/projects/${project.id}/`}

@@ -1,0 +1,140 @@
+---
+type: build
+title: Fire Drill
+indexTitle: 'Fire Drill: running a six-person build team'
+homeTileTitle: Fire Drill
+index: '08'
+accentColor: '#b0522f'
+typeLabel: Build / Project management
+homeSubtitle: 'Build · Project manager, drill-powered vehicle'
+byline: 'Project Manager · 6-person team · MCEN 3025 Component Design · Fall 2026'
+heroTile:
+  size: small
+specBar:
+  - label: My role
+    value: Project manager. Schedule, shop coordination, purchasing, drivetrain parts
+  - label: Team
+    value: 2 CAD, 2 manufacturing, 1 testing and systems, 1 PM
+  - label: Record
+    value: 13 of 13 team deliverables on time
+  - label: Budget
+    value: $172 of $200
+footerLine: 'Status: vehicle built and running · Run Off December 3 · final report December 9'
+---
+
+import { Image } from 'astro:assets';
+import AlternatingBlock from '../../components/AlternatingBlock.astro';
+import PullQuote from '../../components/PullQuote.astro';
+import DeliverableTimeline from '../../components/DeliverableTimeline.astro';
+import teamBus from '../../assets/images/firedrill/team-bus.jpg';
+import cadIso from '../../assets/images/firedrill/cad-iso.jpg';
+import cadExploded from '../../assets/images/firedrill/cad-exploded.jpg';
+import frameLayout from '../../assets/images/firedrill/frame-layout.jpg';
+import welding from '../../assets/images/firedrill/welding.jpg';
+import tackWelded from '../../assets/images/firedrill/tack-welded-frame.jpg';
+import drillPlateFit from '../../assets/images/firedrill/drill-plate-fit.jpg';
+
+<AlternatingBlock image={teamBus} alt="The Fire Drill team: six faces in the windows of a cartoon school bus" side="left" aspectRatio="16/9">
+<h3>The project</h3>
+<p>Six of us had one semester to design, machine and weld a vehicle powered only by a cordless drill, then race it in the Run Off endurance event. The rules: under $200, under 50 lb, under 7 ft, at least three wheels, and at least three custom-machined parts including the frame. I was the project manager. This page is less about the trike and more about how we got it built: how the team came together, how we worked, and what I'd change.</p>
+</AlternatingBlock>
+
+<div class="single-col wide">
+<h3>Building the team on purpose</h3>
+<p>We didn't wait to get assigned a team. Our lead CAD engineer and I sat down and recruited one, looking for a mix of strengths instead of just friends. I'd worked with one of our manufacturing engineers before and knew she was a strong designer. We also found a student who had spent two summers as a test engineer, so we knew we had our testing lead before day one. By the first class, roles mostly sorted themselves out because everyone was already in a spot they wanted. Nobody else wanted to be PM, so I took it.</p>
+</div>
+
+<PullQuote accentColor="#b0522f">
+One person driving, everyone else supporting.
+</PullQuote>
+
+<div class="single-col wide">
+<h3>How we worked</h3>
+<p>We ran a hybrid plan. The course deliverables were fixed milestones, laid out for the whole semester in our planning document in week three. The work to hit each one ran as a short sprint: one person owned it and drove it, and everyone else supported in a structured way. Every CAD part had a named owner, so when our lead CAD engineer was deep in the frame assembly and texted the group "I need the sprocket adapter in two hours," I knew it was mine and had it done right after class.</p>
+<p style="margin-top:14px">We also set a team deadline 48 hours before every real one. I was learning about scheduling and buffers in my project management class at the same time, so I could take something from Monday's lecture and use it with the team on Tuesday.</p>
+</div>
+
+<div class="single-col wide">
+<span class="alt-block__eyebrow" style="color:#b0522f">The receipts</span>
+<h3>Every deliverable, from Gradescope</h3>
+<p>Each bar runs from when we turned something in to when it was due. Early on we were submitting the same day. The Motors and Drills deliverable, a gear-ratio calculation, came down to the last morning and was stressful. After that the team agreed to really hold the 48-hour line, and from then on everything went in days early, including the manufacturing review revisions, which went in 13 days early.</p>
+</div>
+
+<DeliverableTimeline
+  accentColor="#b0522f"
+  start="2026-08-31"
+  end="2026-12-10"
+  resetDate="2026-09-23"
+  resetLabel="We tightened up here"
+  events={[
+    { date: '2026-10-05', label: 'Mfg review (early)' },
+    { date: '2026-11-04', label: 'Frame tack welded' },
+    { date: '2026-12-03', label: 'Run Off' },
+  ]}
+  items={[
+    { name: 'Team Intro', due: '2026-09-02', submitted: '2026-09-02T12:13', score: '13 / 13', note: 'Who we are, our roles and how we planned to communicate.' },
+    { name: 'Planning Document', due: '2026-09-08', submitted: '2026-09-08T10:49', score: '14 / 15', note: 'The full semester schedule: every deliverable with one owner and a team target 48 hours early.' },
+    { name: 'Frame Analysis', due: '2026-09-15', submitted: '2026-09-11T15:37', score: '15 / 15', note: 'Hand calcs on the frame under rider and drive loads.' },
+    { name: 'Initial Frame CAD', due: '2026-09-15', submitted: '2026-09-15T22:05', score: '15 / 15', note: 'First frame model with assembly features, led by our lead CAD engineer.' },
+    { name: 'Requirements', due: '2026-09-16', submitted: '2026-09-16T11:19', score: '8 / 10', note: 'Turning the race rules and our goals into requirements we could test against.' },
+    { name: 'BOM + Sketches + CAD', due: '2026-09-22', submitted: '2026-09-22T23:25', score: '19 / 20', note: 'Bill of materials, concept sketches and the first full assembly. Closest call of the semester.' },
+    { name: 'Motors and Drills', due: '2026-09-23', submitted: '2026-09-23T11:27', score: '9 / 10', note: 'Gear ratio math for the drill drive. A stressful one, and the reason we recommitted to the 48-hour buffer.' },
+    { name: 'Drill Characterization', due: '2026-09-29', submitted: '2026-09-25T12:54', score: '20 / 20', note: 'Measured drill speed vs. torque to size the 10T to 60T chain drive.' },
+    { name: 'Tolerancing', due: '2026-10-06', submitted: '2026-09-30T13:07', score: '9 / 10', note: 'Fits and tolerances for the machined parts.' },
+    { name: 'Mfg Review Revisions', due: '2026-10-25', submitted: '2026-10-12T23:56', score: '30 / 30', note: 'Fixed every redline from the manufacturing review and got parts cleared for the shop.' },
+    { name: 'Report Draft', due: '2026-11-06', submitted: '2026-11-05T09:42', score: '19 / 20', note: 'Full draft of the final design report. I wrote the timeline and bill of materials sections.' },
+    { name: 'Component Check', due: '2026-11-16', submitted: '2026-11-11T10:47', score: '40 / 40', note: 'Every custom part checked against its drawing.' },
+    { name: 'MVP Check', due: '2026-11-20', submitted: '2026-11-18T13:43', note: 'Video of the assembled vehicle driving under drill power.' },
+    { name: 'Final Report', due: '2026-12-09', note: 'Due after the Run Off.' },
+  ]}
+/>
+
+<AlternatingBlock image={welding} alt="A teammate MIG welding the rear dropouts onto the frame" side="right" aspectRatio="4/3">
+<h3>Putting people where they shine</h3>
+<p>One of our CAD engineers was clearly the strongest at it, so I made him lead CAD and gave him real ownership of the model. He directed the frame work with our second CAD engineer and checked in with me when he needed to, instead of me managing every part. Our testing engineer and one manufacturing engineer teamed up on the drill plate, and the other manufacturing engineer took the pillow blocks and a few other parts. I took the sprockets, the hex drill axle, the sprocket adapter and all of the purchasing.</p>
+</AlternatingBlock>
+
+<div class="single-col wide">
+<p>Leadership ended up shared, too. Our testing engineer became the go-to for assignments: when a document came up, she'd split it into sections and set the internal due date. That freed me up for the schedule, the shop and purchasing, and the team was better for having more than one person who could run things.</p>
+</div>
+
+<div class="fd-gallery">
+  <figure><Image src={frameLayout} class="fd-gallery__frame-layout" alt="Frame tubes laid out on the welding table" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 330px" /><figcaption>Frame laid out for welding</figcaption></figure>
+  <figure><Image src={drillPlateFit} alt="Test-fitting the waterjet drill plate on the frame" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 330px" /><figcaption>Fitting the drill plate</figcaption></figure>
+  <figure><Image src={tackWelded} alt="Tack-welded frame seen from below" widths={[400, 800]} sizes="(max-width: 700px) 100vw, 330px" /><figcaption>Tack welded, Nov 4</figcaption></figure>
+</div>
+
+<div class="single-col wide">
+<span class="alt-block__eyebrow" style="color:#b0522f">When something breaks</span>
+<h3>Fix the problem, not the blame</h3>
+<p>The day we went to put the head tube together, I had a feeling it wouldn't fit our fork. I tried it upstairs, and it didn't. My first instinct was to figure out whose part it was. I didn't send that text, because it wouldn't have helped anyone.</p>
+<p style="margin-top:14px">Instead I took it to the shop. The first person I asked said we'd have to redesign the part, which would have cost days. I kept asking and found someone willing to cut it and try a faster fix. While I waited for him, I texted the team the new gusset length we'd need. Our lead CAD engineer had it designed by the time he got to the shop, we welded it in, and the problem was solved that same afternoon. Waiting an hour in the shop without lunch was worth not losing a week.</p>
+</div>
+
+<AlternatingBlock image={cadIso} alt="CAD render of the finished drill-powered trike" side="left" aspectRatio="4/3" fit="contain">
+<h3>The engineering</h3>
+<p>The trike runs a 1 in A513 steel square-tube frame: sawed, bent, coped and MIG welded, with a curved S-tube up to the head tube. The drill mounts on a 3/16 in waterjet aluminum plate and drives a lathe-turned hex axle through a 10-tooth sprocket and a 60-tooth chainring, a 6:1 reduction sized from our drill speed and torque testing. The axle rides in milled aluminum pillow blocks with press-fit bearings. A donated kid's bike supplied the wheels, chain and fork.</p>
+</AlternatingBlock>
+
+<div class="single-col wide">
+  <Image src={cadExploded} alt="Exploded CAD view of every part in the assembly" widths={[700, 1400]} sizes="(max-width: 700px) 100vw, 680px" style="width:100%;height:auto;display:block" />
+</div>
+
+<div class="tech-details">
+  <h3>By the numbers</h3>
+  <ul>
+    <li><strong>Budget:</strong> $172.35 spent of $200. We predicted $149 at the manufacturing review; sprockets and hardware ran higher, and donated and provided parts covered the gap.</li>
+    <li><strong>Custom parts:</strong> frame, drill plate, pillow blocks, hex drill axle, modified drill sprocket, sprocket adapter, trigger block and dropouts</li>
+    <li><strong>Schedule:</strong> shop availability and drawing redlines pushed frame welding back about two weeks from our own plan, and the buffer absorbed it. No deadline was missed.</li>
+  </ul>
+</div>
+
+<div class="single-col wide">
+<span class="alt-block__eyebrow" style="color:#b0522f">Looking back</span>
+<h3>What I'd do differently</h3>
+<ul class="fd-lessons">
+  <li><strong>Schedule the wait.</strong> I planned shop time but not time waiting for the shop. The schedule held anyway because it had slack, but next time I'd plan for it on purpose.</li>
+  <li><strong>Plan the build day.</strong> On our first welding day all five of us showed up without a clear plan, and there was a lot of standing around. Fifteen minutes with a manufacturing lead the day before would have fixed it.</li>
+  <li><strong>Assign strengths deliberately.</strong> Our testing engineer ran assignments well because it played to her strengths. Next time I'd make that call explicitly on day one instead of letting it happen on its own.</li>
+</ul>
+</div>
