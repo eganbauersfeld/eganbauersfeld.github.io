@@ -2,6 +2,31 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectTile from '../components/ProjectTile.astro';
+import type { ImageMetadata } from 'astro';
+import firedrillImg from '../assets/images/firedrill/welding.jpg';
+import gearloopImg from '../assets/images/gearloop/product-on-backpack.jpg';
+import gauntletImg from '../assets/images/gauntlet/adaptive-pe.jpg';
+import woolImg from '../assets/images/wool/vacuum-infusion.webp';
+import ffoctImg from '../assets/images/ffoct/setup.jpg';
+import shelfImg from '../assets/images/shelf/assembled.jpg';
+import trussImg from '../assets/images/truss/load-test.jpg';
+import turbineImg from '../assets/images/turbine/render.png';
+import outfitImg from '../assets/images/outfit/closet.jpg';
+
+// A photo behind each home tile, keyed by project id.
+// panel: tall photos sit in a right-side panel this % wide (over a blurred fill) so they aren't cropped too tight.
+type TilePhoto = { src: ImageMetadata; panel?: number; position?: string };
+const tileImages: Record<string, TilePhoto> = {
+  firedrill: { src: firedrillImg, position: '50% 45%' },
+  gearloop: { src: gearloopImg, panel: 45 },
+  gauntlet: { src: gauntletImg, position: '50% 40%' },
+  wool: { src: woolImg },
+  ffoct: { src: ffoctImg, panel: 60 },
+  shelf: { src: shelfImg, panel: 60 },
+  truss: { src: trussImg },
+  steadyflow: { src: turbineImg },
+  outfit: { src: outfitImg, panel: 55, position: '50% 0%' },
+};
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.index.localeCompare(b.data.index));
 
@@ -31,6 +56,9 @@ const smalls = projects.filter((p) => p.data.heroTile.size === 'small');
             title={large.data.homeTileTitle ?? large.data.indexTitle}
             typeLabel={large.data.homeSubtitle}
             accentColor="#8a9678"
+            image={tileImages[large.id]?.src}
+            imagePanel={tileImages[large.id]?.panel}
+            imagePosition={tileImages[large.id]?.position}
             size="large"
           />
         </div>
@@ -44,6 +72,9 @@ const smalls = projects.filter((p) => p.data.heroTile.size === 'small');
               title={project.data.homeTileTitle ?? project.data.indexTitle}
               typeLabel={project.data.homeSubtitle}
               accentColor={i === 0 ? '#c2a968' : '#7d8fa6'}
+              image={tileImages[project.id]?.src}
+            imagePanel={tileImages[project.id]?.panel}
+            imagePosition={tileImages[project.id]?.position}
               size="medium"
             />
           </div>
@@ -59,6 +90,9 @@ const smalls = projects.filter((p) => p.data.heroTile.size === 'small');
           title={project.data.homeTileTitle ?? project.data.indexTitle}
           typeLabel={project.data.homeSubtitle}
           accentColor={['#a15c3e', '#4b4a3d', '#93807a', '#8a7130'][i % 4]}
+          image={tileImages[project.id]?.src}
+            imagePanel={tileImages[project.id]?.panel}
+            imagePosition={tileImages[project.id]?.position}
           size="small"
         />
       ))}
